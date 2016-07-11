@@ -1,0 +1,330 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+
+<div class="page-header">
+    <h3>API Key Resource </h3>
+</div>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get API Keys</b><br>
+            <small>Retrieves list of api keys that have been created by users</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/api-keys?offset=:offset&limit=:limit&sort=:sort&asc=:asc&getAll=:getAll</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>offset=[integer]</code> <i class="small text-muted">default=0</i><br>
+                    Paging parameter start. <br>
+                    <span class="example">example</span>: <kbd class="small">offset=15</kbd>
+                </li>
+                <li>
+                    <code>limit=[integer]</code> <i class="small text-muted">default=15</i><br>
+                    Maximum number of records to return<br>
+                    <span class="example">example</span> <kbd class="small">limit=30</kbd>
+                </li>
+                <li>
+                    <code>sort=[string]</code> <i class="small text-muted">default='creationTime'</i><br>
+                    Sort field
+                </li>
+                <li>
+                    <code>asc=[boolean]</code> <i class="small text-muted">default=true</i><br>
+                    Sort order <span class="example">example</span>: <kbd class="small">asc=false</kbd>
+                </li>
+                <li>
+                    <code>getAll=[boolean]</code> <i class="small text-muted">default=false</i><br>
+                    Whether to return all api keys (true) or restrict to api keys for user making request (false)<br>
+                    <span class="example">example</span>:
+                    <kbd class="small">getAll=true</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+  "resultCount": 3,
+  "data": [
+    {
+      "id": 1,
+      "account": {
+        "id": 124,
+        "email": "Administrator",
+        "initials": "",
+        "firstName": "",
+        "lastName": "",
+        "institution": ""
+      },
+      "clientId": "diva.jbei.org",
+      "creationTime": 1452037781326
+    },
+    {
+      "id": 2,
+      "account": {
+        "id": 398,
+        "email": "user1@lbl.gov",
+        "initials": "",
+        "firstName": "User",
+        "lastName": "One",
+        "institution": "Lawrence Berkeley Laboratory"
+      },
+      "clientId": "user.local",
+      "creationTime": 1452538514921
+    },
+    {
+      "id": 3,
+      "account": {
+        "id": 123,
+        "email": "user2@lbl.gov",
+        "initials": "",
+        "firstName": "User",
+        "lastName": "Two",
+        "institution": "Lawrence Berkeley Laboratory"
+      },
+      "clientId": "user2.local",
+      "creationTime": 1464115193600
+    }
+  ]
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier or api token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If user is requesting all api keys (<code>getAll=true</code>) but does not have administrative
+                privileges
+            </small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/api-keys"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-striped table-bordered margin-top" id="2">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Create API Key</b><br>
+            <small>Generate API key for use by a third party application</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/api-keys?client_id=:clientId</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>clientId=[string]</code><br>
+                    Unique (for user making request) client application identifier.<br>
+                    <span class="example">example</span>: <kbd class="small">clientId='my.local.application'</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td></td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    "id": 4,
+    "clientId": "my.local.application",
+    "secret": "P40tBoq8qaCxxRBUWJaLtSz0CNVMe+SrxdRJ8jGFFSw=",
+    "token": "V3MLSsXwsDB0p5AIhy82ufOK/bph/zA0pjbXo2oTLBo=",
+    "creationTime": 1464126166960
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the <code>client_id</code> parameter is not set</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-Authentication-SessionId: &lsaquo;unique-session-identifier&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d ''
+     -H "https://public-registry.jbei.org/rest/api-key?client_id=my.local.application"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            The uniqueness requirement of the client identifier is not enforced but recommended.
+            <p>The api token that is generated and returned to the user is not stored and therefore cannot be retrieved.
+                If lost, the api key record can be deleted by the user who created it (or an admin) and a new one
+                created.
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+

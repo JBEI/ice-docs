@@ -1,0 +1,1145 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Annotations</b> <span class="label label-warning">Admin</span><br>
+        <small>Retrieves list of available sequence annotations</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/annotations?offset=:offset&limit=:limit&sort=:sort&asc=:asc</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br> <br>
+
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>offset=[integer]</code> <i class="small text-muted">default=0</i><br>
+                    Paging parameter start. <br>
+                    <span class="example">example</span>: <kbd class="small">offset=15</kbd>
+                </li>
+                <li>
+                    <code>limit=[integer]</code> <i class="small text-muted">default=15</i><br>
+                    Maximum number of records to return<br>
+                    <span class="example">example</span> <kbd class="small">limit=30</kbd>
+                </li>
+                <li>
+                    <code>sort=[string]</code> <i class="small text-muted">default='created'</i><br>
+                    Sort field
+                </li>
+                <li>
+                    <code>asc=[boolean]</code> <i class="small text-muted">default=true</i><br>
+                    Sort order <span class="example">example</span>: <kbd class="small">asc=false</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td></td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+                    <b>Code:</b> 200 <br>
+                    <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                        ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+<pre ng-if="showResponse">{
+  "resultCount": 12256,
+  "data": [
+    {
+      "label": " ",
+      "features": [
+        {
+          "id": 20533,
+          "type": "",
+          "name": " ",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "aaccgacgaa",
+          "entries": [
+            63967
+          ]
+        },
+        {
+          "id": 20538,
+          "type": "",
+          "name": " ",
+          "strand": 1,
+          "annotationType": "misc_feature",
+          "notes": [],
+          "locations": [],
+          "sequence": "gaattcgagctcggtacccggggatcctctagagtcgacctgcaggcatgca",
+          "entries": [
+            63967
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"Neomycin\"",
+      "features": [
+        {
+          "id": 2112,
+          "type": "",
+          "name": "\"Neomycin\"",
+          "strand": 1,
+          "annotationType": "gene",
+          "notes": [],
+          "locations": [],
+          "sequence": "gatggattgcacgcaggttctccggccgcttgggtggagaggctattcggctatgactgggcacaacagacaatcggctgctctgatgccgccgtgttccggctgtcagcgcaggggcgcccggttctttttgtcaagaccgacctgtccggtgccctgaatgaactgcaggacgaggcagcgcggctatcgtggctggccacgacgggcgttccttgcgcagctgtgctcgacgttgtcactgaagcgggaagggactggctgctattgggcgaagtgccggggcaggatctcctgtcatctcaccttgctcctgccgagaaagtatccatcatggctgatgcaatgcggcggctgcatacgcttgatccggctacctgcccattcgaccaccaagcgaaacatcgcatcgagcgagcacgtactcggatggaagccggtcttgtcgatcaggatgatctggacgaagagcatcaggggctcgcgccagccgaactgttcgccaggctcaaggcgcgcatgcccgacggcgaggatctcgtcgtgacccatggcgatgcctgcttgccgaatatcatggtggaaaatggccgcttttctggattcatcgactgtggccggctgggtgtggcggaccgctatcaggacatagcgttggctacccgtgatattgctgaagagcttggcggcgaatgggctgaccgcttcctcgtgctttacggtatcgccgctcccgattcgcagcgcatcgccttctatcgccttcttgacgagttcttc",
+          "entries": [
+            3486,
+            3487
+          ],
+          "curation": {
+            "exclude": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "\"HIS3\"",
+      "features": [
+        {
+          "id": 2115,
+          "type": "",
+          "name": "\"HIS3\"",
+          "strand": 1,
+          "annotationType": "gene",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcttttaaagaggccctaggggccgtgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagctttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtaccaacgatgttccctccaccaaaggtgttcttatg",
+          "entries": [
+            3486,
+            3487,
+            30649
+          ]
+        },
+        {
+          "id": 2119,
+          "type": "",
+          "name": "\"HIS3\"",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgtatccgctcatgacattaacctataaaaataggcgtatcacgaggccctttcgtcttcaaacgcgtgtacacccgggcggccgctgcgtgggcggcactccggaggcgcgccgaattctttacactttatgcttccggctcgtatgttgtgtcgaccgagcggataacaatttcacacaggaaacagctatgacagagcagaaagccctagtaaagcgtattacaaatgaaaccaagattcagattgcgatctctttaaagggtggtcccctagcgatagagcactcgatcttcccagaaaaagaggcagaagcagtagcagaacaggccacacaatcgcaagtgattaacgtccacacaggtatagggtttctggaccatatgatacatgctctggccaagcattccggctggtcgctaatcgttgagtgcattggtgacttacacatagacgaccatcacaccactgaagactgcgggattgctctcggtcaagcttttaaagaggccctaggggccgtgcgtggagtaaaaaggtttggatcaggatttgcgcctttggatgaggcactttccagagcggtggtagatctttcgaacaggccgtacgcagttgtcgaacttggtttgcaaagggagaaagtaggagatctctcttgcgagatgatcccgcattttcttgaaagctttgcagaggctagcagaattaccctccacgttgattgtctgcgaggcaagaatgatcatcaccgtagtgagagtgcgttcaaggctcttgcggttgccataagagaagccacctcgcccaatggtaccaacgatgttccctccaccaaaggtgttcttatgtag",
+          "entries": [
+            3487
+          ]
+        }
+      ]
+    },
+    {
+      "label": " LOC_Os06g49320.1",
+      "features": [
+        {
+          "id": 7788,
+          "type": "",
+          "name": " LOC_Os06g49320.1",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgaagcaccatcatgtggcgcgggggcgcgccgagccgcggcggatgggcaacgccgccatggtcatcaccatgctcctctccctctgcgtcctcacctacatcaaggctcgctactgctccacccccttccccaaggcggcggaggagatggaggtggtggagatcgacgaggattacgacagcacgaggtacaagatgacggggccgataggggaggaggacttcgacccgaccaggccgacgtgctacgtcacgagcaagcggtcggagcggtgcgccgccgtgggcgacatccgcgtcgacggcaaccactccaagatctacatcaacccgctcgacaaggagtggagaaccaagccgtacgcgcgcctccacgacgccgtcgccatggacgacgtgcgggagttcacgctcgtccccttcggcggcgccaaccacaccgccgtgccgccgctctgcacgcgcaaccactccgtcccggcgttcctcttctccagcggcggcttcgccggcaacctgtaccatgactacaccgacgtgctcgtcccgctcttcaccagcaccaaccacttcggcggcgaggtgcagttcttgctcagcgggatcaaggattggtggctcgacaagttcacgccgctgttccggcagctctcccggtacgacgtcatcgacgtcgacaacgaccaggaggtgcactgcttcccgcggatcttcatcggcgccacgttccaccgcgccatgggcatcgacccggcgcgctccccgggcggcgtcaccgtcgccgacttcaagcgcctcctccgccgcaccttccgcctggagcgcgccgtcgcgtcgcgcacgggcgcgccgcggcgcgacaagccgcgcctcctcatcatctcccgcaagagctcgcgccgcttcctcaacgagcgcgccatggcgcacgccgccgcgctcgccaggttcgacgtgcgcatcgccgagccggacaaccacaccgacatgcccaacttcgcgcgcctcgtcaactccgccgacgtgatgatgggcgtccatggcgccggcctcaccaacatggtgttcctccccagccgcgccgtgctcatccaggtggtgccattcggggggctcgaatggctcacccgtgtcaccttcaaggatccagccaaggacatggatgtcaactacatggagtacaatgtctccttcgacgagagctcgctgagagagctctacccgagagaccatttctacatccagcatccatacgatgtgcacaagaaaggctgggacgccatcaagacggtgtacctggacaagcagaatgtggagctcaacctcaccaagctcaccaacacgctggaacgggcgcgcgacttcttgccagagccc",
+          "entries": [
+            33642
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"M13_pUC_rev_primer\"",
+      "features": [
+        {
+          "id": 2103,
+          "type": "",
+          "name": "\"M13_pUC_rev_primer\"",
+          "strand": 1,
+          "annotationType": "misc_feature",
+          "notes": [],
+          "locations": [],
+          "sequence": "agcggataacaatttcacacagg",
+          "entries": [
+            4708,
+            4792,
+            18150,
+            18210,
+            24391,
+            24392,
+            24393,
+            24270,
+            24271,
+            62456,
+            62458
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"EK\"",
+      "features": [
+        {
+          "id": 2105,
+          "type": "",
+          "name": "\"EK\"",
+          "strand": 1,
+          "annotationType": "misc_feature",
+          "notes": [],
+          "locations": [],
+          "sequence": "gatgacgacgacaag",
+          "entries": [
+            3485,
+            60798,
+            60800,
+            60802
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"NEOKAN_promoter\"",
+      "features": [
+        {
+          "id": 2113,
+          "type": "",
+          "name": "\"NEOKAN_promoter\"",
+          "strand": 1,
+          "annotationType": "promoter",
+          "notes": [],
+          "locations": [],
+          "sequence": "ggaattgccagctggggcgccctctggtaaggttgggaagccctgcaa",
+          "entries": [
+            3486,
+            3487
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"AmpR_promoter\"",
+      "features": [
+        {
+          "id": 2107,
+          "type": "",
+          "name": "\"AmpR_promoter\"",
+          "strand": 1,
+          "annotationType": "promoter",
+          "notes": [],
+          "locations": [],
+          "sequence": "ttcaaatatgtatccgctcatgagacaat",
+          "entries": [
+            4481,
+            4708,
+            4792,
+            18150,
+            18210,
+            24391,
+            60705,
+            61284,
+            61285,
+            61286
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"M13_reverse_primer\"",
+      "features": [
+        {
+          "id": 2104,
+          "type": "",
+          "name": "\"M13_reverse_primer\"",
+          "strand": 1,
+          "annotationType": "misc_feature",
+          "notes": [],
+          "locations": [],
+          "sequence": "ggaaacagctatgaccatg",
+          "entries": [
+            4708,
+            4792,
+            33049,
+            33050,
+            33051,
+            33052,
+            33053,
+            33054,
+          ]
+        }
+      ]
+    },
+    {
+      "label": " LOC_Os08g39380.1",
+      "features": [
+        {
+          "id": 7819,
+          "type": "",
+          "name": " LOC_Os08g39380.1",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgatgcctgtacgcacgtaccaccaccaccaccaccacaacaacagcaacaaccatcggctacgccgcatcatcccccgagtcctcctcgccgtcttcgccatctacgccgtctcgttcgcggcgtacctcctccgccaccagtcgccgcacccgcacccgcaccctgccgctgaccccgagcgcgacgccgtggacgcagccggaggaggcggaggaggaggagccgtggaccgtgtgcgggtagaagcgccgtcctcgcagaagccatggcctcgcctcccctccttcctcccgtggacgtccgcctccgttcggccgccgccgaagcactcctgtgaggggtacttcgggaacgggttctcccgcctcgtggacgtgctccccgcgcggggcggcggcggcggcgggtggttccggtgccaccacagcgagacgctgcgcagctcgatctgcgagggcgggagggtgcggctcgacccggggctcatcgcgatgtcgcgcggcggcgagccgctcgaccaggtgatgggccgcgccgaggaggaggagctgcccaagtacgagcccggcgcgctgcaggtggaggcggcggcgaagaggacggggccgttggtggaagcggggttcctcgacgcctacgtgcccaccggcgggatcgggatgcacacgatgaggtcgctgctcgactcggggcgcgtcgtgccgcccggcgagctacactgctcgcagtgggttgaagaaccaacacttctagtaactcgttttgaatatgcaaaccttttccacacaattacggactggtacagtgcatatgtcagttccagagtcacggatttacctaaccgccctaatgtggtctttgtggatggacattgcaaggcacaactggagcaaacatgggaagcacttttctcaaatgtgacatatgttaagaatttctctggccctgtttgttttcgacatgcaattctttcaccattgggctatgagactgcgctatttaagggccttagtgagagctttagctgcgaaggtgcttctgcggagtccctcagagaaaagcctgatcaccagaaaacggcaaggttgtctgaatttggtgagatgattttagcttcttttgatcttctgagggatgacatactgtcatccaaaacatcaaatgggctcaatgttctctttgttcggcgagaggactacttggcccatccacgccacagtggaaaggttgaatctagactaagcaatgagaaggaggtatatgatgcaattgagggctgggcaaaaggtcagaaatgcaaaataaatgtcatcaatggtctttttgcccacatgaacatgaaggagcaactgcgtgctatacaggaagcttcagtagtaataggggcacatggggctggtctaactcacttggtttcagctaccccagatacaaaagtccttgaaatcatcagcagcatgtatcgacgcccacattttgcattgatctcacactggaagagcttagagtatcatgccataaatctccctggatcatatgcaagggtaacagatgttatcaatgagttgagtaatatactgaaaggttttggatgc",
+          "entries": [
+            33657
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"GLR\"",
+      "features": [
+        {
+          "id": 17228,
+          "type": "",
+          "name": "\"GLR\"",
+          "strand": 1,
+          "annotationType": "misc_feature",
+          "notes": [],
+          "locations": [],
+          "sequence": "ggttcgaaa",
+          "entries": [
+            58040
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"Orf frame 1\"",
+      "features": [
+        {
+          "id": 2302,
+          "type": "",
+          "name": "\"Orf frame 1\"",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgcagggttctgtgacagagtttctaaaaccgcgcctggttgatatcgagcaagtgagttcgacgcacgccaaggtgacccttgagcctttagagcgtggctttggccatactctgggtaacgcactgcgccgtattctgctctcatcgatgccgggttgcgcggtgaccgaggttgagattgatggtgtactacatgagtacagcaccaaagaaggcgttcaggaagatatcctggaaatcctgctcaacctgaaagggctggcggtgagagttcagggcaaagatgaagttattcttaccttgaataaatctggcattggccctgtgactgcagccgatatcacccacgacggtgatgtcgaaatcgtcaagccgcagcacgtgatctgccacctgaccgatgagaacgcgtctattagcatgcgtatcaaagttcagcgcggtcgtggttatgtgccggcttctacccgaattcattcggaagaagatgagcgcccaatcggccgtctgctggtcgacgcatgctacagccctgtggagcgtattgcctacaatgttgaagcagcgcgtgtagaacagcgtaccgacctggacaagctggtcatcgaaatggaaaccaacggcacaatcgatcctgaagaggcgattcgtcgtgcggcaaccattctggctgaacaactggaagctttcgttgacttacgtgatgtacgtcagcctgaagtgaaagaagagaaaccagaggcggccgcggactacaaggatgacgacgacaagttccggaccggttccaagacacccccccatggtaccaagccctacgtaaagatcaccgaacaaccggcaggaaaggcgctaaggtttcgctacgagtgcgagggacgctcggcgggatccattccgggcgtgaactctacgccggagaacaagacctatccgacaatcgaaattgtgggctacaagggacgcgccgtagttgttgtctcctgcgtcacaaaggatacgccatatcgtcctcatccccacaatttagttggcaaggagggctgcaagaagggcgtctgtacactggagatcaacagtgagacaatgcgagcggtgttcagtaacttgggtatccagtgtgtcaaaaagaaggacattgaggcggcgctcaaggcgcgcgaggagatccgtgtggatccgtttaagactggcttttcgcatcgtttccagccctcgagcatagatctgaattcggtgcgattgtgctttcaagtattcatggagagcgagcagaagggtcgattcacctcgccactgccgccggtagtttcggagcccatcttcgataagaaggccatgtccgacctggtcatctgccggctgtgtagctgctcggccaccgttttcggcaacacccagatcatcctgctctgcgagaaggtggccaaggaggacatctccgtgcgattctttgaggagaagaatggccagagtgtttgggaggcctttggtgacttccagcacacggatgtccacaagcagactgccattacctttaagacgccgcgctatcataccctggacatcacagagcccgccaaggtttttattcaactgcgacgtccctcggatggagttaccagcgaggccctgcccttcgagtacgtgccaatggactcagatccagcgcacttgaggcggaaacgtcagaagtaa",
+          "entries": [
+            3483
+          ]
+        },
+        {
+          "id": 2304,
+          "type": "",
+          "name": "\"Orf frame 1\"",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgcagggttctgtgacagagtttctaaaaccgcgcctggttgatatcgagcaagtgagttcgacgcacgccaaggtgacccttgagcctttagagcgtggctttggccatactctgggtaacgcactgcgccgtattctgctctcatcgatgccgggttgcgcggtgaccgaggttgagattgatggtgtactacatgagtacagcaccaaagaaggcgttcaggaagatatcctggaaatcctgctcaacctgaaagggctggcggtgagagttcagggcaaagatgaagttattcttaccttgaataaatctggcattggccctgtgactgcagccgatatcacccacgacggtgatgtcgaaatcgtcaagccgcagcacgtgatctgccacctgaccgatgagaacgcgtctattagcatgcgtatcaaagttcagcgcggtcgtggttatgtgccggcttctacccgaattcattcggaagaagatgagcgcccaatcggccgtctgctggtcgacgcatgctacagccctgtggagcgtattgcctacaatgttgaagcagcgcgtgtagaacagcgtaccgacctggacaagctggtcatcgaaatggaaaccaacggcacaatcgatcctgaagaggcgattcgtcgtgcggcaaccattctggctgaacaactggaagctttcgttgacttacgtgatgtacgtcagcctgaagtgaaagaagagaaaccagaggcggccgcccctcgagtccggaccggttccaagacacccccccatgaacgcccatatgcttgccctgtcgagtcctgcgatcgccgcttttctcgctcggatgagcttacccgccatatccgcatccataccggtcagaagcccttccagtgtcgaatctgcatgcgtaacttcagtcgtagtgaccaccttaccacccacatccgcacccacacaggcgagaagccttttgcctgtgacatttgtgggaggaagtttgccaggagtgatgaacgcaagaggcataccaaaatccatttaagacagaaggacgtctag",
+          "entries": [
+            3484
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\"CAT/CamR(660-444)\"",
+      "features": [
+        {
+          "id": 2300,
+          "type": "",
+          "name": "\"CAT/CamR(660-444)\"",
+          "strand": 1,
+          "annotationType": "gene",
+          "notes": [],
+          "locations": [],
+          "sequence": "atggagaaaaaaatcactggatataccaccgttgatatatcccaatggcatcgtaaagaacattttgaggcatttcagtcagttgctcaatgtacctataaccagaccgttcagctggatattacggcctttttaaagaccgtaaagaaaaataagcacaagttttatccggcctttattcacattcttgcccgcctgatgaatgctcatccggaa",
+          "entries": [
+            3483,
+            3484
+          ]
+        }
+      ]
+    },
+    {
+      "label": " LOC_Os01g02930.1",
+      "features": [
+        {
+          "id": 7624,
+          "type": "",
+          "name": " LOC_Os01g02930.1",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgggcagcgaggtgaagccggcgaagcttggcctccggcgacacctcaacgccggcttcttcgccggcttcctcctcgtcctcctcacctacgtcatcgtctcgcagcagttcgccatggaaactcccacagctgtcactagcagggcgccgaggattgacgagaatgagtcggtgaccaaggctcgcgttgaaacagagaagaagagggagcaggagtggcagcggccaaaggacacgtctggtgccgtctcagcagaagagttctccaaaagagactcgacaaatgccaaaccgattgagaacggcaaggtagtgtgcggctcgaacgggttctactccgacacctgcgacgtcgacggcgacgtccggatcaacggcacggctctctccgtgacccttgttccggcgagccgccggtcggagcgccgccgcgagtggaagatccagccgtacccgcgcaggaccgtgtccggcatcgcggaggtgaccgtgacgcggcagcaggaccgggccgccgcgccggcgtgcacggtgacccacggcgtgcccggcgtcgtgttcgcgctcggcggcctgaccggcaactactggcacgacttcagcgacgtgctggtgccgctgttcgtggcgtcgcggcggtacggcggcgaggtccagttcctggtcagcaacatccagccatggtggctgggcaagtacgaggccgtcgtgcggcggctgtcgcggtacgacgccgtcgacctcgaccgcgacacggaggtccggtgcttccgccgcgtcgccgtcgggctccgcatgcacaaggagttcagcgtgaagccggagctggcgccgggcgggcagcggctgacgatggcggacttcgccgcgttcctccgcgacacctacgcgctcccccgcgccgcggcggcgggcgcgaggcggccgcggctggtggtgatccggcgcgcgcactaccggaagatcgtgaacatggacgaggtggtgcgcgcggcggaggcggcggggttcgaggcggcggtgatgtcgccgcggttcgacgagccggtggaggaggtggcgaggaaggtgaacgcgttcgacgcgatggtgggcgtgcacggcgccgggctgacgaacgcggtgttcctgccggcgggggcggtggtgatccaggtggtgccgtacgggcggctggagcggatggcgagggcggacttcggcgagccggtggcggacatggggctccggtacatggagtacagcgtcgccgccgacgagagcacgctgctggagatgctggggccggagcaccaggtggtgaaggacccggaggcggttcaccggagcggctgggacaaggtcgccgagtactacctcggcaagcaggacgtccgcatcaacgtcgcccgcttcgccgccacgctcgccgccgccttcgatcaccttcgaccatcacatagc",
+          "entries": [
+            33560
+          ]
+        }
+      ]
+    },
+    {
+      "label": " LOC_Os01g02920.1",
+      "features": [
+        {
+          "id": 7623,
+          "type": "",
+          "name": " LOC_Os01g02920.1",
+          "strand": 1,
+          "annotationType": "CDS",
+          "notes": [],
+          "locations": [],
+          "sequence": "atgggaggcgatcatgggaagctcatgaagagcttgaagggtgcagctcagaagtatctcggcgtcggcttcttgctcggcttcttccttgttctcctcacatacttcaccgtctccgagcagttcgcgatcgctgcacccaacgcaattcggaaaacatcaccgggacacgcctccccgacgatccccccgcctgtggaagagaagaggccacagctgccccctatcatagagcagcggcaagcaccaaaggcagagcatgagcatgcagcggtggtacaggagaagaccccgtcagctgaagagatagagatacagaaagaaacagaagaggaccacaccaaggagaagcccactgatgacgtcaccaccacggtggaggagagcgcgccggcgaagaagccggcgtgcgacatccaggggccatgggcgtccgacgtgtgcagcatcgacggcgacgtgcgcatccacggcgcggcgcacgacgtcgtgatcccgccgccgatcgagggcggcggcagcaacccgaacccgcgggagtggcgcgtcgtgccctactcgcggaagcacatgggcgggctcaaggaggtggcggtgcgggaggtggcgtcggcggcggaggcgccggcgtgcgacgtgcggtcgccggtgccggcgctggtgttcgccatgggcgggctgacgggcaactactggcacgacttctccgacgtgctcatcccgctgtacctgcaggcgcggcggttcgacggcgaggtgcagctcgttgtggagaacatccagatgtggtacgtgggcaagtacaagcgcgtcctggaccggctgtcgcgccacgacatcgtcgacatggacagggacgacaaggtccggtgcttccccggcgcggtggtcggcatccggatgcacaaggagttcagcatcgacccggcgcgggatcccacgggccactccatgccggagttcaccaagttcctccgcgacaccttctcgctgccgcgcgacgcgccggtgagcctcgtcgacaatgccgcggcggtgaggccgcggttgatgatcatctcgcggcggcacccgcggaagctgatgaacgtggaggaggtggtgcgggcggcggagcggatcgggttcgaggtggtgatcggcgacccgccgttcaacgtggacgtcggcgagttcgccaaggaggtgaaccgcgcggacgtgctgatgggcgtccatggcgcggggctgacgaactcggtgttcctgccgacgggggcggtgctgatccaggtggtgccgtacgggaagatggagcacatcgggaaggtggacttcggcgatccggcggaggacatgaggctcaagtacatggcgtactccgccggcgtggaggagagcacgctggtggagacgctggggcgcgaccacccggcggtgcgcgacccggagtcggtccaccggagcgggtgggggaaggtcgccgagtactacctcggcaagcaggacatccgcctcgatctcgcccgcttcgagcccctcctccgcgacgccatggattacctcaaacaccag",
+          "entries": [
+            33559
+          ]
+        }
+      ]
+    }
+  ]
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifiers or api token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user account does not have administrative privileges</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/annotations"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+<table class="table table-striped table-bordered margin-top" id="2">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Curate Annotations</b> <span class="label label-warning">Admin</span><br>
+            <small>Curate available annotations to exclude/include them in auto-annotation feature</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/annotations</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>PUT</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        <pre>[{
+    id: Integer,
+    curation: {
+        exclude: Boolean
+    }
+}]</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td>
+            <b>Code:</b> 200 <small class="text-muted">OK</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifiers or api token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user account does not have administrative privileges</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+        <pre>
+    curl -X PUT
+         -H "Content-Type: application/json"
+         -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+         -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+         -H "Cache-Control: no-cache"
+         -d '[{id:2300, curation:{exclude:true}}, {id:7624, curation:{exclude:true}}]
+         -H "https://public-registry.jbei.org/rest/annotations"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+<table class="table table-striped table-bordered margin-top margin-top" id="3">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Annotations for Sequence</b><br>
+            <small>Retrieves list of annotations (from available list) that can be applied to a sequence</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/annotations</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td></td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200 <small class="text-muted">OK</small> <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+ "features": [
+   {
+     "id": 4279,
+     "type": "misc_feature",
+     "name": "lacI",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 2046,
+         "end": 3137
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 9573,
+     "type": "CDS",
+     "name": "lacI",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 2050,
+         "end": 3128
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 4280,
+     "type": "CDS",
+     "name": "ORF frame 1",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 2046,
+         "end": 3005
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 19923,
+     "type": "source",
+     "name": "synthetic DNA construct",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3263,
+         "end": 3399
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 16724,
+     "type": "misc_feature",
+     "name": "misc_feature",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3263,
+         "end": 3399
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 16719,
+     "type": "source",
+     "name": "source",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3263,
+         "end": 3399
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 12262,
+     "type": "source",
+     "name": "Cloning vector pESC-LEU",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3263,
+         "end": 3399
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 11694,
+     "type": "misc_feature",
+     "name": "backbone",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 2092,
+         "end": 2139
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 11582,
+     "type": "source",
+     "name": "Cloning vector pESC-URA",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3263,
+         "end": 3399
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 6352,
+     "type": "source",
+     "name": "Cloning vector pRS412",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3263,
+         "end": 3399
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 4978,
+     "type": "misc_feature",
+     "name": "checks with 318",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 2085,
+         "end": 2139
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 4956,
+     "type": "allele",
+     "name": "PCR2",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3299,
+         "end": 3399
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 2688,
+     "type": "rep_origin",
+     "name": "PMB1",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3543,
+         "end": 4483
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 9854,
+     "type": "rep_origin",
+     "name": "PMB",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3575,
+         "end": 4483
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 8934,
+     "type": "source",
+     "name": "source Cloning vector pRS424",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3580,
+         "end": 4486
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 8917,
+     "type": "source",
+     "name": "source Cloning vector pRS424",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3581,
+         "end": 4486
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 9853,
+     "type": "rep_origin",
+     "name": "PMB",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3579,
+         "end": 4483
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 8945,
+     "type": "rep_origin",
+     "name": "PMB",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3580,
+         "end": 4483
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 8933,
+     "type": "rep_origin",
+     "name": "PMB",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3581,
+         "end": 4483
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 9857,
+     "type": "rep_origin",
+     "name": "PMB",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3594,
+         "end": 4483
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 4328,
+     "type": "CDS",
+     "name": "lac I",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3599,
+         "end": 4486
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 1616,
+     "type": "rep_origin",
+     "name": "ColE1",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 3543,
+         "end": 4423
+       }
+     ],
+     "entries": []
+   },
+   {
+     "id": 4149,
+     "type": "misc_feature",
+     "name": "d5b1f737-c18c-4912-ad1b-6bafd51a6404",
+     "strand": 1,
+     "notes": [],
+     "locations": [
+       {
+         "genbankStart": 5298,
+         "end": 5336
+       }
+     ],
+     "entries": []
+   }
+ ],
+ "identifier": "",
+ "name": "",
+ "isCircular": true,
+ "canEdit": false,
+ "length": 0,
+ "sequence": "ggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacatttccccgaaaagtgccacctgacgtctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggccctttcgtcttcacctcgagaaatcataaaaaatttatttgctttgtgagcggataacaattataatagattcaattgtgagcggataacaatttcacacagaattcattaaagaggagaaattaacgatggcagaaccgcaagaactgaccatttatcatattccgggttgtccgtttagcgaacgtgttgaaattatgctggaactgaaaggtctgcgtatgaaagatgtggaaatcgatattagcaaaccgcgtccggattggctgctggcaaaaaccggtggcaccaccgcactgccgctgctggatgttgaaaatggtgaaagcctgaaagaaagcatggtgattctgcgttatctggaacagcgctatccggaaccggcagttgcacatcctgatccgttttgtcatgcagttgaaggtatgctggcagaactggcaggtccgttttcaggtgcaggttatcgtatgattctgaatcgcgaaattggtaaacgtgaagaaatgcgtgcagcagttgatgcagaatttggtaaagttgatgccttcctgaaacgttatgcaaccggtagcgattttctgtttgatgatcgttttggttgggcagaagttgcatttaccccgatgtttaaacgtctgtggttcctggattattatgaggattatgaagtgcctgccaattttgatcgtgttctgcgttggcgtgcagcctgtaccgcacatccggcagcacagtatcgtagcaaagaagaactgctgaaactgtattatgattatacccagggtggtggtaatggtcgtattccggaaggtcgtagcattagcagctttagtccggatgttgattggcgtacccgtccgatgcctcctcgcgataaatggggtcatgcagcaaccgatgccgaactgggtctgacccgcctcgcagatggtaaaattctgcataatcagaatgtgaatagctggggtccgattaccgttaccccgaccaccgatggtggtgaaacccgttttgatggtcagattattgtgcagatggaaaatgatccggttgttgcaaaagcagcagcaaatctggcaggtaaacatgcagaaagcagcgttgttgttcagctggatagtgatggtaattatcgtgttgtttatggcgatccgagcaaactggatggtaaactgcgttggcagctggttggtcatggtcgtgatcatagcgaaaccaataatacccgtctgagcggttatagcgcagatgaactggcagttaaactggcaaaatttcagcagagctttaatcaggccgaaaacattaataacaaaccggatcatatttcgattgtgggttgtagcctggtgagtgatgataaacagaaaggttttggccaccagtttattaacgcaatggatgcaaatggtctgcgtgttgatgttagcgttcgtagcagcgaactggccgttgatgaagcaggtcgtaaacacaccaaagatgccaatggtgattgggttcagaaagccgaaaataacaaagttagcattagctgggatgcacagggcggttctggtgagaatgcatactttcaaggatggtcacatccacaattcgaaaagaatagcgccgtcgacggtagcggacatcatcatcatcatcatcatcattgaggcagttattggtgcccttaaacgcctggggtaatgactctctagcttgaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctcctgagtaggacaaatccgccctctagattacgtgcagtcgatgataagctgtcaaacatgagaattgtgcctaatgagtgagctaacttacattaattgcgttgcgctcactgcccgctttccagtcgggaaacctgtcgtgccagctgcattaatgaatcggccaacgcgcggggagaggcggtttgcgtattgggcgccagggtggtttttcttttcaccagtgagacgggcaacagctgattgcccttcaccgcctggccctgagagagttgcagcaagcggtccacgctggtttgccccagcaggcgaaaatcctgtttgatggtggttaacggcgggatataacatgagctgtcttcggtatcgtcgtatcccactaccgagatatccgcaccaacgcgcagcccggactcggtaatggcgcgcattgcgcccagcgccatctgatcgttggcaaccagcatcgcagtgggaacgatgccctcattcagcatttgcatggtttgttgaaaaccggacatggcactccagtcgccttcccgttccgctatcggctgaatttgattgcgagtgagatatttatgccagccagccagacgcagacgcgccgagacagaacttaatgggcccgctaacagcgcgatttgctggtgacccaatgcgaccagatgctccacgcccagtcgcgtaccgtcttcatgggagaaaataatactgttgatgggtgtctggtcagagacatcaagaaataacgccggaacattagtgcaggcagcttccacagcaatggcatcctggtcatccagcggatagttaatgatcagcccactgacgcgttgcgcgagaagattgtgcaccgccgctttacaggcttcgacgccgcttcgttctaccatcgacaccaccacgctggcacccagttgatcggcgcgagatttaatcgccgcgacaatttgcgacggcgcgtgcagggccagactggaggtggcaacgccaatcagcaacgactgtttgcccgccagttgttgtgccacgcggttgggaatgtaattcagctccgccatcgccgcttccactttttcccgcgttttcgcagaaacgtggctggcctggttcaccacgcgggaaacggtctgataagagacaccggcatactctgcgacatcgtataacgttactggtttcacattcaccaccctgaattgactctcttccgggcgctatcatgccataccgcgaaaggttttgcaccattcgatggtgtcggaatttcgggcagcgttgggtcctggccacgggtgcgcatgatctagagctgcctcgcgcgtttcggtgatgacggtgaaaacctctgacacatgcagctcccggagacggtcacagcttgtctgtaagcggatgccgggagcagacaagcccgtcagggcgcgtcagcgggtgttggcgggtgtcggggcgcagccatgacccagtcacgtagcgatagcggagtgtatactggcttaactatgcggcatcagagcagattgtactgagagtgcaccatatgcggtgtgaaataccgcacagatgcgtaaggagaaaataccgcatcaggcgctcttccgcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaaggacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttagaaaaactcatcgagcatcaaatgaaactgcaatttattcatatcaggattatcaataccatatttttgaaaaagccgtttctgtaatgaaggagaaaactcaccgaggcagttccataggatggcaagatcctggtatcggtctgcgattccgactcgtccaacatcaatacaacctattaatttcccctcgtcaaaaataaggttatcaagtgagaaatcaccatgagtgacgactgaatccggtgagaatggcaaaagtttatgcatttctttccagacttgttcaacaggccagccattacgctcgtcatcaaaatcactcgcatcaaccaaaccgttattcattcgtgattgcgcctgagcgagacgaaatacgcgatcgctgttaaaaggacaattacaaacaggaatcgaatgcaaccggcgcaggaacactgccagcgcatcaacaatattttcacctgaatcaggatattcttctaatacctggaatgctgttttcccggggatcgcagtggtgagtaaccatgcatcatcaggagtacggataaaatgcttgatggtcggaagaggcataaattccgtcagccagtttagtctgaccatctcatctgtaacatcattggcaacgctacctttgccatgtttcagaaacaactctggcgcatcgggcttcccatacaatcgatagattgtcgcacctgattgcccgacattatcgcgagcccatttatacccatataaatcagcatccatgttggaatttaatcgcggcctagagcaagacgtttcccgttgaatatggctcatactcttcctttttcaatattattgaagcatttatcag"
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d '{sequence:"ggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacatttccccgaaaagtgccacctgacgtctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggccctttcgtcttcacctcgagaaatcataaaaaatttatttgctttgtgagcggataacaattataatagattcaattgtgagcggataacaatttcacacagaattcattaaagaggagaaattaacgatggcagaaccgcaagaactgaccatttatcatattccgggttgtccgtttagcgaacgtgttgaaattatgctggaactgaaaggtctgcgtatgaaagatgtggaaatcgatattagcaaaccgcgtccggattggctgctggcaaaaaccggtggcaccaccgcactgccgctgctggatgttgaaaatggtgaaagcctgaaagaaagcatggtgattctgcgttatctggaacagcgctatccggaaccggcagttgcacatcctgatccgttttgtcatgcagttgaaggtatgctggcagaactggcaggtccgttttcaggtgcaggttatcgtatgattctgaatcgcgaaattggtaaacgtgaagaaatgcgtgcagcagttgatgcagaatttggtaaagttgatgccttcctgaaacgttatgcaaccggtagcgattttctgtttgatgatcgttttggttgggcagaagttgcatttaccccgatgtttaaacgtctgtggttcctggattattatgaggattatgaagtgcctgccaattttgatcgtgttctgcgttggcgtgcagcctgtaccgcacatccggcagcacagtatcgtagcaaagaagaactgctgaaactgtattatgattatacccagggtggtggtaatggtcgtattccggaaggtcgtagcattagcagctttagtccggatgttgattggcgtacccgtccgatgcctcctcgcgataaatggggtcatgcagcaaccgatgccgaactgggtctgacccgcctcgcagatggtaaaattctgcataatcagaatgtgaatagctggggtccgattaccgttaccccgaccaccgatggtggtgaaacccgttttgatggtcagattattgtgcagatggaaaatgatccggttgttgcaaaagcagcagcaaatctggcaggtaaacatgcagaaagcagcgttgttgttcagctggatagtgatggtaattatcgtgttgtttatggcgatccgagcaaactggatggtaaactgcgttggcagctggttggtcatggtcgtgatcatagcgaaaccaataatacccgtctgagcggttatagcgcagatgaactggcagttaaactggcaaaatttcagcagagctttaatcaggccgaaaacattaataacaaaccggatcatatttcgattgtgggttgtagcctggtgagtgatgataaacagaaaggttttggccaccagtttattaacgcaatggatgcaaatggtctgcgtgttgatgttagcgttcgtagcagcgaactggccgttgatgaagcaggtcgtaaacacaccaaagatgccaatggtgattgggttcagaaagccgaaaataacaaagttagcattagctgggatgcacagggcggttctggtgagaatgcatactttcaaggatggtcacatccacaattcgaaaagaatagcgccgtcgacggtagcggacatcatcatcatcatcatcatcattgaggcagttattggtgcccttaaacgcctggggtaatgactctctagcttgaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctcctgagtaggacaaatccgccctctagattacgtgcagtcgatgataagctgtcaaacatgagaattgtgcctaatgagtgagctaacttacattaattgcgttgcgctcactgcccgctttccagtcgggaaacctgtcgtgccagctgcattaatgaatcggccaacgcgcggggagaggcggtttgcgtattgggcgccagggtggtttttcttttcaccagtgagacgggcaacagctgattgcccttcaccgcctggccctgagagagttgcagcaagcggtccacgctggtttgccccagcaggcgaaaatcctgtttgatggtggttaacggcgggatataacatgagctgtcttcggtatcgtcgtatcccactaccgagatatccgcaccaacgcgcagcccggactcggtaatggcgcgcattgcgcccagcgccatctgatcgttggcaaccagcatcgcagtgggaacgatgccctcattcagcatttgcatggtttgttgaaaaccggacatggcactccagtcgccttcccgttccgctatcggctgaatttgattgcgagtgagatatttatgccagccagccagacgcagacgcgccgagacagaacttaatgggcccgctaacagcgcgatttgctggtgacccaatgcgaccagatgctccacgcccagtcgcgtaccgtcttcatgggagaaaataatactgttgatgggtgtctggtcagagacatcaagaaataacgccggaacattagtgcaggcagcttccacagcaatggcatcctggtcatccagcggatagttaatgatcagcccactgacgcgttgcgcgagaagattgtgcaccgccgctttacaggcttcgacgccgcttcgttctaccatcgacaccaccacgctggcacccagttgatcggcgcgagatttaatcgccgcgacaatttgcgacggcgcgtgcagggccagactggaggtggcaacgccaatcagcaacgactgtttgcccgccagttgttgtgccacgcggttgggaatgtaattcagctccgccatcgccgcttccactttttcccgcgttttcgcagaaacgtggctggcctggttcaccacgcgggaaacggtctgataagagacaccggcatactctgcgacatcgtataacgttactggtttcacattcaccaccctgaattgactctcttccgggcgctatcatgccataccgcgaaaggttttgcaccattcgatggtgtcggaatttcgggcagcgttgggtcctggccacgggtgcgcatgatctagagctgcctcgcgcgtttcggtgatgacggtgaaaacctctgacacatgcagctcccggagacggtcacagcttgtctgtaagcggatgccgggagcagacaagcccgtcagggcgcgtcagcgggtgttggcgggtgtcggggcgcagccatgacccagtcacgtagcgatagcggagtgtatactggcttaactatgcggcatcagagcagattgtactgagagtgcaccatatgcggtgtgaaataccgcacagatgcgtaaggagaaaataccgcatcaggcgctcttccgcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaaggacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttagaaaaactcatcgagcatcaaatgaaactgcaatttattcatatcaggattatcaataccatatttttgaaaaagccgtttctgtaatgaaggagaaaactcaccgaggcagttccataggatggcaagatcctggtatcggtctgcgattccgactcgtccaacatcaatacaacctattaatttcccctcgtcaaaaataaggttatcaagtgagaaatcaccatgagtgacgactgaatccggtgagaatggcaaaagtttatgcatttctttccagacttgttcaacaggccagccattacgctcgtcatcaaaatcactcgcatcaaccaaaccgttattcattcgtgattgcgcctgagcgagacgaaatacgcgatcgctgttaaaaggacaattacaaacaggaatcgaatgcaaccggcgcaggaacactgccagcgcatcaacaatattttcacctgaatcaggatattcttctaatacctggaatgctgttttcccggggatcgcagtggtgagtaaccatgcatcatcaggagtacggataaaatgcttgatggtcggaagaggcataaattccgtcagccagtttagtctgaccatctcatctgtaacatcattggcaacgctacctttgccatgtttcagaaacaactctggcgcatcgggcttcccatacaatcgatagattgtcgcacctgattgcccgacattatcgcgagcccatttatacccatataaatcagcatccatgttggaatttaatcgcggcctagagcaagacgtttcccgttgaatatggctcatactcttcctttttcaatattattgaagcatttatcag"}'
+     -H "https://public-registry.jbei.org/rest/annotations"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+<table class="table table-striped table-bordered margin-top" id="4">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Rebuild Annotations</b> <span class="label label-warning">Admin</span><br>
+            <small>Rebuilds the annotations database used in the auto-annotations feature.</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>PUT</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td></td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td>
+            <b>Code:</b> 200 <small class="text-muted">OK</small> <br>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If the account of the user making the request does not have administrative privileges</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td><pre>
+curl -X PUT
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/annotations/indexes"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+

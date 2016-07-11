@@ -1,0 +1,1661 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+
+<div class="page-header">
+    <h3>Part Resource </h3>
+</div>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Part</b> <br>
+            <small>Retrieves details about a part</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <code>id=[string]</code> <br>
+            One of the unique identifier values for a part (part number, uuid or id)<br>
+            <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    "id": 3984,
+    "type": "PLASMID",
+    "visible": "OK",
+    "parents": [
+        {
+            "id": 226,
+            "type": "STRAIN",
+            "visible": "OK",
+            "name": "JBEI-3156",
+            "status": "",
+            "bioSafetyLevel": 1,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": false,
+            "hasOriginalSequence": false,
+            "canEdit": false,
+            "publicRead": false,
+            "linkedParts": []
+        },
+        {
+            "id": 4963,
+            "type": "STRAIN",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "name": "JBEI-3144",
+            "bioSafetyLevel": 1,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": false,
+            "hasOriginalSequence": false,
+            "canEdit": false,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        },
+        {
+            "id": 3985,
+            "type": "STRAIN",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "name": "NJH-0010",
+            "bioSafetyLevel": 1,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": false,
+            "hasOriginalSequence": false,
+            "canEdit": false,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        },
+        {
+            "id": 4101,
+            "type": "STRAIN",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "name": "JBEI-2804",
+            "bioSafetyLevel": 1,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": false,
+            "hasOriginalSequence": false,
+            "canEdit": false,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        }
+    ],
+    "recordId": "919d0205-9b3a-4669-a1c7-8e8357f54b08",
+    "name": "pNJH00010",
+    "owner": "Nathan Hillson",
+    "ownerEmail": "njhillson@lbl.gov",
+    "creator": "Nathan Hillson",
+    "creatorEmail": "njhillson@lbl.gov",
+    "alias": "pS8c-gfpuv_sigpep",
+    "status": "complete",
+    "shortDescription": "gpfuv with a cterminal peptide tag for beta-carboxysome localization (as constructed by Jay Kinney in Cheryl Kerfeld's lab) under the control of PBAD. The BioBrick sites have been removed, in anticipation of further construction steps.",
+    "longDescription": "",
+    "references": "Hillson, N.J., Rosengarten, R.D., and Keasling J.D. (2012) j5 DNA Assembly Design Automation Software. ACS Synthetic Biology 1 (1), 14-21. DOI: 10.1021/sb2000116",
+    "creationTime": 1260584545000,
+    "modificationTime": 1337295405595,
+    "bioSafetyLevel": 1,
+    "partId": "JBx_000274",
+    "links": [],
+    "principalInvestigator": "Nathan J. Hillson",
+    "selectionMarkers": [
+        "Chloramphenicol"
+    ],
+    "fundingSource": "DE-AC02-05CH11231",
+    "viewCount": 0,
+    "hasAttachment": false,
+    "hasSample": false,
+    "hasSequence": true,
+    "hasOriginalSequence": true,
+    "parameters": [],
+    "canEdit": true,
+    "publicRead": false,
+    "linkedParts": [],
+    "plasmidData": {
+        "backbone": "pBbS8c",
+        "originOfReplication": "pSC101",
+        "promoters": "Arabinose",
+        "circular": true
+    }
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If user does not have the appropriate permissions on the specified resource</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/parts/226"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            Separate calls are required for additional information about the part. Such as any associated sequence,
+            attachments etc.
+            The
+            <pre>hasAttachment</pre>
+            and
+            <pre>hasSequence</pre>
+            attributes of the returned json object will
+            indicate whether such additional information is available.
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="2">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Create Part</b> <br>
+            <small>Create a new part in ICE</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts?source=:sourceId</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>source=[string]</code><br>
+                    One of the unique identifier values for an existing part (part number, uuid or id). A copy of that
+                    part is created if set<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>source=12</kbd> or
+                    <kbd>source=Jbx_01234</kbd> or <kbd>source=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+            <b>Note</b>: If the <code>source</code> query param is set, this will be ignored<br><br>
+            <pre>{
+    type: 'STRAIN' | 'PLASMID' | 'PART' | 'ARABIDOPSIS',
+    name: String,
+    alias: String,
+    keywords: String,
+    status: 'Complete' | 'In Progress' | 'Planned' | 'Abandoned',
+    shortDescription: String,
+    longDescription: String,
+    references: String,
+    bioSafetyLevel: Integer,
+    intellectualProperty: String,
+    links: [String],
+    principalInvestigator: String,
+    principalInvestigatorEmail: String,
+    selectionMarkers: [String],
+    fundingSource: String,
+    parameters: [{name: String, value: String}],
+    strainData: { // <i>if type='STRAIN'</i>
+        host: String,
+        genotypePhenotype: String
+    },
+    plasmidData: { // <i>if type='PLASMID'</i>
+        backbone: String,
+        originOfReplication: String,
+        promoters: String,
+        circular: Boolean,
+        replicatesIn: String
+    },
+    arabidopsisSeedData: { // <i>if type='ARABIDOPSIS'</i>
+        homozygosity: String,
+        ecotype: String
+        harvestDate: String
+        seedParents: String
+        generation: UNKNOWN | F1 | F2 | F3 | M0 | M1 | M2 | T0 | T1 | T2 | T3 | T4 | T5,
+        plantType: EMS | OVER_EXPRESSION | RNAI | REPORTER | T_DNA | OTHER | NULL,
+        sentToAbrc: Boolean
+    }
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <br>
+            <pre ng-if="showResponse">{
+    id: 52921,
+    recordId: "52a1f97c-b9a0-4cc2-abc2-e2141e1be9f7"
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <b>Creating a copy of an existing part</b><br>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d '' "https://public-registry.jbei.org/rest/parts?source=3984"
+            </pre>
+
+            <br><br>
+            <b>Create a new part</b>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d '{
+        type: 'PLASMID',
+        name: "pNJH00010",
+        alias: "pS8c-gfpuv_sigpep",
+        status: 'Complete',
+        shortDescription: "gpfuv with a cterminal peptide tag for beta-carboxysome localization (as constructed by Jay Kinney in Cheryl Kerfeld's lab) under the control of PBAD. The BioBrick sites have been removed, in anticipation of further construction steps.",
+        references: "Hillson, N.J., Rosengarten, R.D., and Keasling J.D. (2012) j5 DNA Assembly Design Automation Software. ACS Synthetic Biology 1 (1), 14-21. DOI: 10.1021/sb2000116",
+        bioSafetyLevel: 1,
+        principalInvestigator: "Nathan J Hillson",
+        selectionMarkers: ["Chloramphenicol"],
+        fundingSource: "DE-AC02-05CH11231",
+        plasmidData: {
+            backbone: "pBbS8c",
+            originOfReplication: "pSC101",
+            promoters: "Arabinose",
+            circular: true
+        }'
+        "https://public-registry.jbei.org/rest/parts"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            If any of the required fields are missing, the <code>Visibility</code> of the entry is set to
+            <code>DRAFT</code>. Regular <code>Visibility</code> is <code>OK</code>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="3">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Update Part</b> <br>
+            <small>Updates the metadata for an existing part.</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>PUT</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <code>id=[string]</code> <br>
+            One of the unique identifier values for a part (part number, uuid or id)<br>
+            <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+            <pre>{
+    type: 'STRAIN' | 'PLASMID' | 'PART' | 'ARABIDOPSIS',
+    name: String,
+    alias: String,
+    keywords: String,
+    status: 'Complete' | 'In Progress' | 'Planned' | 'Abandoned',
+    shortDescription: String,
+    longDescription: String,
+    references: String,
+    bioSafetyLevel: Integer,
+    intellectualProperty: String,
+    links: [String],
+    principalInvestigator: String,
+    principalInvestigatorEmail: String,
+    selectionMarkers: [String],
+    fundingSource: String,
+    parameters: [{name: String, value: String}],
+    strainData: { // <i>if type='STRAIN'</i>
+        host: String,
+        genotypePhenotype: String
+    },
+    plasmidData: { // <i>if type='PLASMID'</i>
+        backbone: String,
+        originOfReplication: String,
+        promoters: String,
+        circular: Boolean,
+        replicatesIn: String
+    },
+    arabidopsisSeedData: { // <i>if type='ARABIDOPSIS'</i>
+        homozygosity: String,
+        ecotype: String
+        harvestDate: String
+        seedParents: String
+        generation: UNKNOWN | F1 | F2 | F3 | M0 | M1 | M2 | T0 | T1 | T2 | T3 | T4 | T5,
+        plantType: EMS | OVER_EXPRESSION | RNAI | REPORTER | T_DNA | OTHER | NULL,
+        sentToAbrc: Boolean
+    }
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    id: 52921,
+    name: "pnjh00020",
+    status: "Complete"
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have write privileges on the entry</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If part resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d '{ name: "pnjh00020"}
+     -H "https://public-registry.jbei.org/rest/parts/3984"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            The passed data field may only contain the fields that are to be updated not the entire data object with the
+            updated fields modified.
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="4">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Part Permissions</b> <br>
+            <small>Retrieves permissions associated with a part.</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/permissions</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <code>id=[string]</code> <br>
+            One of the unique identifier values for a part (part number, uuid or id)<br>
+            <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">[
+{
+    "id": 52921,
+    "type": "READ_ENTRY",
+    "article": "GROUP",
+    "typeId": 226,
+    "articleId": 1,
+    "display": "JBEI",
+    "group": {
+        "id": 1,
+        "uuid": "68f54591-9209-4a23-b7c1-de21cd86048b",
+        "label": "JBEI",
+        "parentId": 2,
+        "description": "JBEI Group",
+        "type": "PUBLIC",
+    }
+}]</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have write privileges on the entry</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If part resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/parts/226/permissions"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="5">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Add Part Permission</b> <br>
+            <small>Adds access permission to a specified part</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/permissions</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <code>id=[string]</code> <br>
+            One of the unique identifier values for a part (part number, uuid or id)<br>
+            <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+            <pre>{
+    type: 'READ_ENTRY' | 'WRITE_ENTRY',
+    typeId: Integer,
+    article: 'ACCOUNT' | 'GROUP',
+    articleId: Integer,
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    "id": 52921,
+    "type": "READ_ENTRY",
+    "article": "GROUP",
+    "typeId": 226,
+    "articleId": 1,
+    "display": "JBEI",
+    "group": {
+        "id": 1,
+        "uuid": "68f54591-9209-4a23-b7c1-de21cd86048b",
+        "label": "JBEI",
+        "parentId": 2,
+        "description": "JBEI Group",
+        "type": "PUBLIC",
+    }
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have write privileges on the entry</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If part resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d '{"id": 52921, "type": "READ_ENTRY", "article": "GROUP", "typeId": 226, "articleId": 1}
+     -H "https://public-registry.jbei.org/rest/parts/226/permissions"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="6">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Remove Part Permission</b> <br>
+            <small>Removes an access permission to a specified part</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/permissions/:permissionId</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>DELETE</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[string]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or
+                    <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+                </li>
+                <li>
+                    <code>permissionId=[long]</code> <br>
+                    Unique identifier associated with a specific permission<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>permissionId=1243</kbd>
+                </li>
+            </ul>
+            <br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have write privileges on the entry whose permission is being
+                removed
+            </small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X DELETE
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/parts/226/permissions/9382"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="7">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Part Experiments</b> <br>
+            <small>Retrieves the experiment links associated with the specified part</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/experiments</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[string]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or
+                    <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+                </li>
+            </ul>
+            <br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+            <pre>{
+    label: String,
+    url: String
+}</pre>
+            <b> Example: </b>
+            <pre>{
+    label: "Methyl ketones 13C labeling experiments (EC137)",
+    url: "http://edd.jbei.org/Study.cgi?studyID=49"
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    id: 15,
+    label: "Methyl ketones 13C labeling experiments (EC137)",
+    url: "http://edd.jbei.org/Study.cgi?studyID=49",
+    created: 1413577633674
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the <code>partId</code> parameter does not correspond to an entry</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have read privileges on the entry</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d '{label: "Methyl ketones 13C labeling experiments (EC137)", url: "http://edd.jbei.org/Study.cgi?studyID=49"}'
+     -H "https://public-registry.jbei.org/rest/parts/226/experiments"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            If an existing experiment link for the same part has the same url, a new link is not added but rather the
+            existing one is updated
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="8">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Create Part Experiment</b> <br>
+            <small>Adds a part experiment url to the specified part</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/experiments</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[string]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or
+                    <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+                </li>
+            </ul>
+            <br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+            <pre>{
+    label: String,
+    url: String
+}</pre>
+            <b> Example: </b>
+            <pre>{
+    label: "Methyl ketones 13C labeling experiments (EC137)",
+    url: "http://edd.jbei.org/Study.cgi?studyID=49"
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    id: 15,
+    label: "Methyl ketones 13C labeling experiments (EC137)",
+    url: "http://edd.jbei.org/Study.cgi?studyID=49",
+    created: 1413577633674
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the <code>partId</code> parameter does not correspond to an entry</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have read privileges on the entry</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X POST
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -d '{label: "Methyl ketones 13C labeling experiments (EC137)", url: "http://edd.jbei.org/Study.cgi?studyID=49"}'
+     -H "https://public-registry.jbei.org/rest/parts/226/experiments"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            If an existing experiment link for the same part has the same url, a new link is not added but rather the
+            existing one is updated
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="9">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Delete Part Experiment</b> <br>
+            <small>Deletes a part experiment link for the specified part</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/experiments/experimentId</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[string]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or
+                    <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+                </li>
+                <li>
+                    <code>experimentId=[long]</code> <br>
+                    Unique identifier for experiment link. Can be obtained from list of experiments or data returned
+                    after creation<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>experimentId=13</kbd>
+                </li>
+            </ul>
+            <br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the <code>partId</code> parameter does not correspond to an entry</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have write privileges on the entry or has read privileges but
+                did not create the experiment link
+            </small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X DELETE
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "https://public-registry.jbei.org/rest/parts/226/experiments/15"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            Users with read privileges on parts are permitted to create and delete links. In order to delete a link
+            on an part which the user has read access on, they must be the creator of the link.
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="10">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Link Part to Another</b> <br>
+            <small>Creates a hierarchy between two parts</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/links?linkType=:linkType</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[string]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or
+                    <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+                </li>
+                <li>
+                    <code>linkType=[string]</code> <br>
+                    Type of link hierarchy to create. Options are <code>CHILD</code> or <code>PARENT</code>.
+                    after creation<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>experimentId=13</kbd>
+                </li>
+            </ul>
+            <br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the <code>partId</code> parameter does not correspond to an entry</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have write privileges on the entry or has read privileges but
+                did not create the experiment link
+            </small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X DELETE
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "https://public-registry.jbei.org/rest/parts/226/experiments/15"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            Users with read privileges on parts are permitted to create and delete links. In order to delete a link
+            on an part which the user has read access on, they must be the creator of the link.
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="11">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Delete Part Experiment</b> <br>
+            <small>Deletes a part experiment link for the specified part</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id/experiments/experimentId</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[string]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or
+                    <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+                </li>
+                <li>
+                    <code>experimentId=[long]</code> <br>
+                    Unique identifier for experiment link. Can be obtained from list of experiments or data returned
+                    after creation<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>experimentId=13</kbd>
+                </li>
+            </ul>
+            <br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the <code>partId</code> parameter does not correspond to an entry</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If requesting user's account does not have write privileges on the entry or has read privileges but
+                did not create the experiment link
+            </small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X DELETE
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "https://public-registry.jbei.org/rest/parts/226/experiments/15"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            Users with read privileges on parts are permitted to create and delete links. In order to delete a link
+            on an part which the user has read access on, they must be the creator of the link.
+        </td>
+    </tr>
+    </tbody>
+</table>

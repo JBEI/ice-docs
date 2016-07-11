@@ -1,0 +1,64 @@
+<html ng-app="iceDocs">
+<title>REST API Documenation</title>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+
+    <!--angular-->
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/docs.js"></script>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+
+    </div>
+
+    <div class="row" ng-controller="IceDocsController as docs">
+        <div class="col-md-3" id="left">
+            <ol class="breadcrumb">
+                <li><a href="../index.html">Main</a></li>
+                <li class="active">REST API Reference</li>
+            </ol>
+
+            <div class="page-header">
+                <h3>Resources</h3>
+            </div>
+
+            <div ng-repeat="resource in docs.resourceList">
+
+                <div class="collection-menu" ng-click='docs.selectPage(resource.name)'>
+                    <span ng-show="resource.name!==docs.selection">{{resource.display}}</span>
+
+                    <span ng-show="resource.name===docs.selection">
+                        <span style="font-weight: 600">{{resource.display}}</span>
+                    </span>
+                </div>
+
+                <menu.details ng-if="docs.selection==resource.name" details="resource.details"></menu.details>
+            </div>
+
+        </div>
+
+        <div class="col-md-9" id="right">
+            <ng-include src="docs.url" ng-if="docs.url"></ng-include>
+            <div ng-if="!docs.url">Make a selection</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

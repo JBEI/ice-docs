@@ -1,0 +1,208 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+
+<div class="page-header">
+    <h3>User Resource </h3>
+    Text Description
+</div>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Part</b> <span class="label label-warning">Admin</span><br>
+            <small>description</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/parts/:id</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <code>id=[string]</code> <br>
+            One of the unique identifier values for a part (part number, uuid or id)<br>
+            <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd> or <kbd>id=Jbx_01234</kbd> or <kbd>id=067e6162-3b6f-4ae2-a171-2470b63dff00</kbd><br><br>
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>query=[string]</code><br>
+                    Search query string.<br>
+                    <span class="example">example</span>: <kbd class="small">q='pBad'</kbd>
+                </li>
+                <li>
+                    <code>offset=[integer]</code> <i class="small text-muted">default=0</i><br>
+                    Paging parameter start. <br>
+                    <span class="example">example</span>: <kbd class="small">offset=15</kbd>
+                </li>
+                <li>
+                    <code>limit=[integer]</code> <i class="small text-muted">default=15</i><br>
+                    Maximum number of records to return<br>
+                    <span class="example">example</span> <kbd class="small">limit=30</kbd>
+                </li>
+                <li>
+                    <code>sort=[string]</code> <i class="small text-muted">default='relevance'</i><br>
+                    Sort field<br>
+                    <span class="example">example</span>: <kbd class="small">sort='RELEVANCE' | 'TYPE' | 'PART_ID' |
+                    'CREATED'</kbd>
+                </li>
+                <li>
+                    <code>asc=[boolean]</code> <i class="small text-muted">default=true</i><br>
+                    Sort order <span class="example">example</span>: <kbd class="small">asc=false</kbd>
+                </li>
+                <li>
+                    <code>searchWeb=[boolean]</code> <i class="small text-muted">default=false</i><br>
+                    Whether to search web of registries or local ICE instance <br>
+                    <span class="example">example</span>:
+                    <kbd class="small">searchWeb=true</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        <span class="caption">If making a post request, what should the body payload look like?
+           This is a good time to document your various data constraints too.</span> <br>
+            <b>Example:</b> <br>
+        <pre>{
+  u : {
+    email : [string],
+    name : [string],
+    current_password : [alphanumeric]
+    password : [alphanumeric],
+    password_confirmation : [alphanumeric]
+  }
+}
+
+</pre>
+            <b> Example: </b>
+<pre>{
+  u : {
+    email : "john@smith.com",
+    name : "John",
+    current_password : "apassw0rd"
+    password : "anewpassw0rd",
+    password_confirmation : "anewpassw0rd"
+  }
+}
+</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200 <small class="text-muted">OK</small> <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">[
+    {
+        "id": 13,
+        "label": "Methyl ketones shake flask experiments (EC127)",
+        "url": "http://edd.jbei.org/Study.cgi?studyID=31",
+        "created": 1413577631124
+    }
+]</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the url parameter is set, but not partner could be found matching it</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If url parameter is set but API token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/partners"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.
+        </td>
+    </tr>
+    </tbody>
+</table>

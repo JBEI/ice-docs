@@ -1,0 +1,150 @@
+<div class="page-header">
+    <h3>User Resource </h3>
+</div>
+
+<table class="table table-striped table-bordered" id="2">
+  <tbody>
+      <tr>
+    <th style="width: 160px; text-align: center" valign="top">
+      Title
+    </th>
+    <td>
+        Show all users
+    </td>
+  </tr>
+  
+  <tr>
+    <th valign="top">
+      URL
+    </th>
+    <td>
+        <code>/rest/users?offset=:offset&amp;limit=:limit&amp;sort=:sort&amp;asc=:asc&amp;filter=:filter</code>
+    </td>
+  </tr>
+  
+  <tr>
+    <th valign="top">
+      Method
+    </th>
+    <td>
+        <b><code>GET</code> </b>
+    </td>
+  </tr>
+  
+  <tr>
+    <th style="width: 160px; text-align: center" valign="top">
+      URL Params
+    </th>
+    <td>
+        <p>
+        <b>Required:</b> <br>
+        None
+            
+        <p>
+        <b>Optional:</b> <br>
+            
+        <ul>
+            <li><code>offset=[integer]</code> <i class="small text-muted">default=0</i><br>Paging parameter start. <br>example: offset=15</li>
+            <li><code>limit=[integer]</code> <i class="small text-muted">default=15</i><br>Maximum number of records to return eg. limit=30</li>
+            <li><code>sort=[string]</code> <i class="small text-muted">default='lastName'</i><br>Sort field eg. limit=30</li>
+            <li><code>asc=[boolean]</code> <i class="small text-muted">default=true</i><br>Sort order eg. asc=false</li>
+            <li><code>filter=[alphanumberic]</code> <i class="small text-muted">default=null</i><br>Filter for fields eg. filter='foo'</li>
+        </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th  style="width: 160px; text-align: center" valign="top">
+      Data Params
+    </th>
+    <td>
+        <span class="caption">If making a post request, what should the body payload look like? 
+           This is a good time to document your various data constraints too.</span> <br>
+        <b>Example:</b> <br>
+        <pre>{
+  u : {
+    email : [string],
+    name : [string],
+    current_password : [alphanumeric]
+    password : [alphanumeric],
+    password_confirmation : [alphanumeric]
+  }
+}
+
+</pre>
+<b> Example: </b>
+<pre>{
+  u : {
+    email : "john@smith.com",
+    name : "John",
+    current_password : "apassw0rd"
+    password : "anewpassw0rd",
+    password_confirmation : "anewpassw0rd"
+  }
+}
+</pre>
+    </td>
+  </tr>
+
+    <tr>
+      <th valign="top">
+        Success Response
+      </th>
+      <td>
+          <span class="caption">What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!</span> <br>
+          <b> Example: </b> <br>
+          <b>Code:</b> 200 <br>
+          <b>Content:</b> <code> { id : 12 }</code><br>
+      </td>
+    </tr>
+    
+    <tr>
+      <th valign="top">
+        Error Response
+      </th>
+      <td>
+          <span class="caption">Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be listed here. It might seem repetitive, but it helps prevent assumptions from being made where they shouldn’t be.</span> <br>
+          <b> Example: </b> <br>
+          <b>Code:</b> 401 UNAUTHORIZED <br>
+          <b>Content:</b> <code> { error : "Log in" }</code><br>
+          OR<br>
+          <b>Code:</b> 422 Unprocessable Entry <br>
+          <b>Content:</b> <code> { error : "Email invalid" }</code><br>
+      </td>
+    </tr>
+    
+    <tr>
+      <th valign="top">
+        Sample Call
+      </th>
+      <td>
+          <span>Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) – this makes life easier and more predictable.</span> <br>
+          <pre>$.ajax({
+  url: "/users",
+  dataType: "json",
+  data : { 
+    u: { 
+      id : 12,
+      email : "john@smith.com" 
+    }
+  },
+  type : "PUT",
+  success : function(r) {
+    console.log(r);
+  }
+});
+
+</pre>
+      </td>
+    </tr>
+    
+    <tr>
+      <th valign="top">
+        Notes
+      </th>
+      <td>
+          <span class="caption">This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.</span> <br>
+      </td>
+    </tr>
+</tbody>
+</table>

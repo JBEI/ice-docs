@@ -1,0 +1,149 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+
+<div class="page-header">
+    <h3>Web Resource </h3>
+    Enables interaction with web of registries
+</div>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Web Entries</b> <br>
+            <small>Get entries that are available on web of registries</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/web/entries?download=:download</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>download=[Boolean]</code><br>
+                    Whether to package the entries and make it available for download.<br>
+                    <span class="example">example</span>: <kbd class="small">download=true</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    key: "fileName",
+    value: "zip-2807431090184812821.zip",
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If url parameter is set but API token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/web/entries?download=true"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            To download the file, make a <code>GET</code> to <code>rest/file/tmp/{result.value}</code> where result
+            is the success response object
+        </td>
+    </tr>
+    </tbody>
+</table>

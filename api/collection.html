@@ -1,0 +1,479 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+
+<div class="page-header">
+    <h3>Collection Resource</h3>
+</div>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Collection Folders</b> <br>
+            <small>Retrieves list of folders available under a specified collection</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/:collectionType/folders</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li><code>collectionType=[FEATURED || PERSONAL || SHARED || DRAFTS || PENDING || DELETED ||
+                    TRANSFERRED]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>rest/collections/FEATURED/folders</kbd>
+                </li>
+            </ul>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">[
+    {
+        "folderName": "Lee et al. 2011",
+        "count": 108,
+        "type": "PUBLIC",
+        "publicReadAccess": false,
+        "canEdit": true,
+        "id": 1
+    },
+    {
+        "folderName": "Hillson et al. 2012",
+        "count": 33,
+        "type": "PUBLIC",
+        "publicReadAccess": false,
+        "canEdit": true,
+        "id": 2
+    },
+    {
+        "folderName": "Linshiz, et al. 2012",
+        "count": 6,
+        "description": "",
+        "type": "PUBLIC",
+        "publicReadAccess": false,
+        "canEdit": true,
+        "id": 18
+    },
+    {
+        "folderName": "Yeh et al. 2012",
+        "count": 14,
+        "description": "",
+        "type": "PUBLIC",
+        "publicReadAccess": false,
+        "canEdit": true,
+        "id": 21
+    }
+]</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the collection type parameter is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If url parameter is set but API token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/collections/FEATURED/folders"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="2">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Collection Entries</b> <br>
+            <small>Retrieves list of entries available under a specified collection</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/:collectionType/entries?offset=:offset&limit=:limit&sort=:sort&asc=:asc&filter=:filter</code>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+
+            <b>Optional:</b> <br>
+            <ul>
+                <li><code>collectionType=[FEATURED || PERSONAL || SHARED || DRAFTS || PENDING || DELETED ||
+                    TRANSFERRED]</code> <br>
+                    One of the unique identifier values for a part (part number, uuid or id)<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>rest/collections/FEATURED/folders</kbd>
+                </li>
+                <li>
+                    <code>offset=[integer]</code> <i class="small text-muted">default=0</i><br>
+                    Paging parameter start. <br>
+                    <span class="example">example</span>: <kbd class="small">offset=15</kbd>
+                </li>
+                <li>
+                    <code>limit=[integer]</code> <i class="small text-muted">default=15</i><br>
+                    Maximum number of records to return<br>
+                    <span class="example">example</span> <kbd class="small">limit=30</kbd>
+                </li>
+                <li>
+                    <code>sort=[string]</code> <i class="small text-muted">default='created'</i><br>
+                    Sort field<br>
+                    <span class="example">example</span>: <kbd class="small">sort='TYPE' | 'PART_ID' | 'NAME' | 'STATUS'
+                    | 'CREATED'</kbd>
+                </li>
+                <li>
+                    <code>asc=[boolean]</code> <i class="small text-muted">default=true</i><br>
+                    Sort order <span class="example">example</span>: <kbd class="small">asc=false</kbd>
+                </li>
+                <li>
+                    <code>filter=[string]</code> <i class="small text-muted">default=""</i><br>
+                    Filter the returned entries by 'part_id' or 'name'. <br>
+                    <span class="example">example</span>: <kbd class="small">filter='pBad'</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td></td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    "resultCount": 49,
+    "data": [
+        {
+            "id": 5227,
+            "type": "PART",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "recordId": "40d03cde-2647-4160-af06-2edd0931b117",
+            "name": "test",
+            "ownerEmail": "haplahar@lbl.gov",
+            "ownerId": 0,
+            "creatorId": 0,
+            "status": "Complete",
+            "shortDescription": "test",
+            "creationTime": 1428030947300,
+            "modificationTime": 0,
+            "bioSafetyLevel": 1,
+            "partId": "JPUB_005227",
+            "principalInvestigatorId": 0,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": true,
+            "hasOriginalSequence": true,
+            "canEdit": true,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        },
+        {
+            "id": 2655,
+            "type": "STRAIN",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "recordId": "30d510b3-35c5-43a8-95c8-f2e6310b7e28",
+            "name": "JBEI-TBD",
+            "ownerEmail": "haplahar@lbl.gov",
+            "ownerId": 0,
+            "creatorId": 0,
+            "status": "In Progress",
+            "shortDescription": "a",
+            "creationTime": 1397087719700,
+            "modificationTime": 0,
+            "bioSafetyLevel": 1,
+            "partId": "JPUB_002432",
+            "principalInvestigatorId": 0,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": true,
+            "hasOriginalSequence": false,
+            "canEdit": true,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        },
+        {
+            "id": 2654,
+            "type": "PLASMID",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "recordId": "cd9ad7c3-791c-48ed-8cb8-acbe35153d32",
+            "name": "pDVA00020",
+            "ownerEmail": "haplahar@lbl.gov",
+            "ownerId": 0,
+            "creatorId": 0,
+            "status": "In Progress",
+            "shortDescription": "a",
+            "creationTime": 1397087719574,
+            "modificationTime": 0,
+            "bioSafetyLevel": 1,
+            "partId": "JPUB_002431",
+            "principalInvestigatorId": 0,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": true,
+            "hasOriginalSequence": true,
+            "canEdit": true,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        },
+        {
+            "id": 2653,
+            "type": "STRAIN",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "recordId": "e40d9876-27e9-4495-8b07-24e7a32eefec",
+            "name": "JBEI-TBD",
+            "ownerEmail": "haplahar@lbl.gov",
+            "ownerId": 0,
+            "creatorId": 0,
+            "status": "In Progress",
+            "shortDescription": "a",
+            "creationTime": 1397087717411,
+            "modificationTime": 0,
+            "bioSafetyLevel": 1,
+            "partId": "JPUB_002430",
+            "principalInvestigatorId": 0,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": false,
+            "hasOriginalSequence": false,
+            "canEdit": true,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        },
+        {
+            "id": 2652,
+            "type": "PLASMID",
+            "visible": "OK",
+            "parents": [],
+            "index": 0,
+            "recordId": "1590ee52-7848-4ce5-9a09-3d0654c68dce",
+            "name": "pDVA00019",
+            "ownerEmail": "haplahar@lbl.gov",
+            "ownerId": 0,
+            "creatorId": 0,
+            "status": "In Progress",
+            "shortDescription": "a",
+            "creationTime": 1397087717201,
+            "modificationTime": 0,
+            "bioSafetyLevel": 1,
+            "partId": "JPUB_002429",
+            "principalInvestigatorId": 0,
+            "basePairCount": 0,
+            "featureCount": 0,
+            "viewCount": 0,
+            "hasAttachment": false,
+            "hasSample": false,
+            "hasSequence": true,
+            "hasOriginalSequence": true,
+            "canEdit": true,
+            "accessPermissions": [],
+            "publicRead": false,
+            "linkedParts": []
+        }
+    ]
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 400
+            <small class="text-muted">BAD_REQUEST</small>
+            <br>
+            <small>If the collection type parameter is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If an attempt is made to retrieve 'PERSONAL' collection entries with invalid user id</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/collections/FEATURED/entries?limit=5"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,451 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+
+<div class="page-header">
+    <h3>Folder Resource</h3>
+</div>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Folder</b> <br>
+            <small>Retrieves details of a folder</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/folders/:id</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[integer]</code> <br>
+                    Unique identifier for folder<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd><br><br>
+                </li>
+            </ul>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+    "folderName": "Hillson et al. 2012",
+    "count": 0,
+    "propagatePermission": false,
+    "type": "PUBLIC",
+    "publicReadAccess": false,
+    "canEdit": false,
+    "id": 2,
+    "creationTime": 0,
+    "entries": []
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If url parameter is set but API token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If folder resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/folders/2"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            The unique identifier for the folder can be obtained from the list of folders retrieved
+            from the call to <code>/rest/collections/{type}/folders</code>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="2">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Get Folder Entries</b> <br>
+            <small>Retrieves entries of a folder</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/folders/:id/entries?offset=:offset&limit=:limit</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <ul>
+                <li>
+                    <code>id=[integer]</code> <br>
+                    Unique identifier for folder<br>
+                    <i style="text-decoration: underline">example</i>: <kbd>id=12</kbd><br><br>
+                </li>
+            </ul>
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>offset=[integer]</code> <i class="small text-muted">default=0</i><br>
+                    Paging parameter start. <br>
+                    <span class="example">example</span>: <kbd class="small">offset=15</kbd>
+                </li>
+                <li>
+                    <code>limit=[integer]</code> <i class="small text-muted">default=15</i><br>
+                    Maximum number of records to return<br>
+                    <span class="example">example</span> <kbd class="small">limit=30</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after most recent successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200
+            <small class="text-muted">OK</small>
+            <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">{
+  "folderName": "Hillson et al. 2012",
+  "count": 33,
+  "propagatePermission": false,
+  "type": "PUBLIC",
+  "publicReadAccess": true,
+  "canEdit": true,
+  "id": 2,
+  "creationTime": 0,
+  "accessPermissions": [],
+  "entries": [
+    {
+      "id": 271,
+      "type": "PLASMID",
+      "visible": "OK",
+      "parents": [],
+      "index": 0,
+      "recordId": "a8c5b747-8741-4b53-8385-4582d751a389",
+      "name": "pGFPuv_sig.pep",
+      "ownerEmail": "njhillson@lbl.gov",
+      "ownerId": 0,
+      "creatorId": 0,
+      "status": "complete",
+      "shortDescription": "pGFPuv from Clontech with a c-terminal localization tag constructed by Jay Kinney in Cheryl Kerfeld's group",
+      "creationTime": 1272477004000,
+      "modificationTime": 0,
+      "bioSafetyLevel": 1,
+      "partId": "JPUB_000271",
+      "principalInvestigatorId": 0,
+      "basePairCount": 0,
+      "featureCount": 0,
+      "viewCount": 0,
+      "hasAttachment": false,
+      "hasSample": false,
+      "hasSequence": true,
+      "hasOriginalSequence": false,
+      "canEdit": true,
+      "accessPermissions": [],
+      "publicRead": false,
+      "linkedParts": []
+    },
+    {
+      "id": 270,
+      "type": "PLASMID",
+      "visible": "OK",
+      "parents": [],
+      "index": 0,
+      "recordId": "7127cd0c-43fe-4c95-952c-548d1b0e8f48",
+      "name": "pSKI",
+      "ownerEmail": "njhillson@lbl.gov",
+      "ownerId": 0,
+      "creatorId": 0,
+      "status": "complete",
+      "shortDescription": "A plasmid PCR template for generating linear DNA fragments containing the KanR and sacB genes, as well as an I-SceI recognition site, to be flanked by E. coli homologous sequences to direct the chromosomal recombination in coordination with the lamda red and I-SceI systems carried on the pREDI plasmid. Note, this is not the original pSKI published, but was derived from pSCI. However, it essentially has the same functionality of the original pSKI.",
+      "creationTime": 1259114643000,
+      "modificationTime": 0,
+      "bioSafetyLevel": 1,
+      "partId": "JPUB_000270",
+      "principalInvestigatorId": 0,
+      "basePairCount": 0,
+      "featureCount": 0,
+      "viewCount": 0,
+      "hasAttachment": false,
+      "hasSample": false,
+      "hasSequence": true,
+      "hasOriginalSequence": true,
+      "canEdit": true,
+      "accessPermissions": [],
+      "publicRead": false,
+      "linkedParts": []
+    },
+    {
+      "id": 269,
+      "type": "STRAIN",
+      "visible": "OK",
+      "parents": [],
+      "index": 0,
+      "recordId": "30abf69a-3c24-490b-af3f-1527badb33f2",
+      "name": "JBEI-3080",
+      "ownerEmail": "njhillson@lbl.gov",
+      "ownerId": 0,
+      "creatorId": 0,
+      "status": "complete",
+      "shortDescription": "Intermediate strain bearing pREDI plasmid transformed with clpX deletion cassette.",
+      "creationTime": 1283897657000,
+      "modificationTime": 0,
+      "bioSafetyLevel": 1,
+      "partId": "JPUB_000269",
+      "principalInvestigatorId": 0,
+      "basePairCount": 0,
+      "featureCount": 0,
+      "viewCount": 0,
+      "hasAttachment": false,
+      "hasSample": false,
+      "hasSequence": true,
+      "hasOriginalSequence": true,
+      "canEdit": true,
+      "accessPermissions": [],
+      "publicRead": false,
+      "linkedParts": []
+    },
+    {
+      "id": 255,
+      "type": "PART",
+      "visible": "OK",
+      "parents": [],
+      "index": 0,
+      "recordId": "8c5790b7-8666-4757-8cd0-a2e2c11d8c4b",
+      "name": "DclpX_cassette",
+      "ownerEmail": "njhillson@lbl.gov",
+      "ownerId": 0,
+      "creatorId": 0,
+      "alias": "JBx_013593",
+      "status": "complete",
+      "shortDescription": "Linear cassette for markerless genomic deletion of clpX gene from E.coli.",
+      "creationTime": 1312923555032,
+      "modificationTime": 0,
+      "bioSafetyLevel": 1,
+      "partId": "JPUB_000255",
+      "principalInvestigatorId": 0,
+      "basePairCount": 0,
+      "featureCount": 0,
+      "viewCount": 0,
+      "hasAttachment": false,
+      "hasSample": false,
+      "hasSequence": true,
+      "hasOriginalSequence": false,
+      "canEdit": true,
+      "accessPermissions": [],
+      "publicRead": false,
+      "linkedParts": []
+    },
+    {
+      "id": 254,
+      "type": "STRAIN",
+      "visible": "OK",
+      "parents": [],
+      "index": 0,
+      "recordId": "a1008c72-343c-4b46-a4d1-70a97c62b8a3",
+      "name": "JBEI-3083",
+      "ownerEmail": "njhillson@lbl.gov",
+      "ownerId": 0,
+      "creatorId": 0,
+      "status": "complete",
+      "shortDescription": "clpX markerless deletion in Keasling-1484 background",
+      "creationTime": 1312923554966,
+      "modificationTime": 0,
+      "bioSafetyLevel": 1,
+      "partId": "JPUB_000254",
+      "principalInvestigatorId": 0,
+      "basePairCount": 0,
+      "featureCount": 0,
+      "viewCount": 0,
+      "hasAttachment": false,
+      "hasSample": false,
+      "hasSequence": true,
+      "hasOriginalSequence": true,
+      "canEdit": true,
+      "accessPermissions": [],
+      "publicRead": false,
+      "linkedParts": []
+    }
+  ]
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHORIZED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If url parameter is set but API token is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 404
+            <small class="text-muted">NOT_FOUND</small>
+            <br>
+            <small>If folder resource cannot be located using specified identifier</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+curl -X GET
+     -H "Content-Type: application/json"
+     -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+     -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+     -H "Cache-Control: no-cache"
+     -H "https://public-registry.jbei.org/rest/folders/2/entries?limit=5"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            The unique identifier for the folder can be obtained from the list of folders retrieved
+            from the call to <code>/rest/collections/{type}/folders</code>
+        </td>
+    </tr>
+    </tbody>
+</table>

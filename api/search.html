@@ -1,0 +1,703 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">-->
+
+    <!--jquery-->
+    <script src="../js/jquery-2.2.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+
+<div class="page-header">
+    <h3>Search Resource </h3>
+    Keyword, advanced and blast searches with filtering
+</div>
+
+<table class="table table-striped table-bordered" id="1">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Run Basic Search</b><br>
+            <small>Keyword search</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/search?q=:query&offset=:offset&limit=:limit&sort=:sort&asc=:asc&searchWeb=:searchWeb</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>GET</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i><br><br>
+
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>query=[string]</code><br>
+                    Search query string.<br>
+                    <span class="example">example</span>: <kbd class="small">q='pBad'</kbd>
+                </li>
+                <li>
+                    <code>offset=[integer]</code> <i class="small text-muted">default=0</i><br>
+                    Paging parameter start. <br>
+                    <span class="example">example</span>: <kbd class="small">offset=15</kbd>
+                </li>
+                <li>
+                    <code>limit=[integer]</code> <i class="small text-muted">default=15</i><br>
+                    Maximum number of records to return<br>
+                    <span class="example">example</span> <kbd class="small">limit=30</kbd>
+                </li>
+                <li>
+                    <code>sort=[string]</code> <i class="small text-muted">default='relevance'</i><br>
+                    Sort field<br>
+                    <span class="example">example</span>: <kbd class="small">sort='RELEVANCE' | 'TYPE' | 'PART_ID' |
+                    'CREATED'</kbd>
+                </li>
+                <li>
+                    <code>asc=[boolean]</code> <i class="small text-muted">default=true</i><br>
+                    Sort order <span class="example">example</span>: <kbd class="small">asc=false</kbd>
+                </li>
+                <li>
+                    <code>searchWeb=[boolean]</code> <i class="small text-muted">default=false</i><br>
+                    Whether to search web of registries or local ICE instance <br>
+                    <span class="example">example</span>:
+                    <kdb class="small">searchWeb=true</kdb>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200 <br>
+            <b>Example content:</b> <a class="cursor-pointer" ng-click="showResponse = !showResponse"><span
+                ng-if="!showResponse">Show</span> <span ng-if="showResponse">Hide</span> </a>
+            <pre ng-if="showResponse">
+   {
+    "resultCount": 311,
+    "results": [
+        {
+            "eValue": "0",
+            "queryLength": 0,
+            "nident": 0,
+            "score": 0.15567097,
+            "maxScore": 0.15567097,
+            "matchDetails": [],
+            "entryInfo": {
+                "id": 235,
+                "type": "STRAIN",
+                "visible": "OK",
+                "parents": [],
+                "index": 0,
+                "recordId": "5b59b958-ef07-4702-b99d-b59026e53137",
+                "name": "JBEI-2804",
+                "owner": "Nathan Hillson",
+                "ownerEmail": "njhillson@lbl.gov",
+                "ownerId": 25,
+                "creator": "Nathan Hillson",
+                "creatorEmail": "njhillson@lbl.gov",
+                "creatorId": 25,
+                "status": "complete",
+                "shortDescription": "DH10B modified for linear arabinose response",
+                "creationTime": 1312923554515,
+                "modificationTime": 0,
+                "bioSafetyLevel": 1,
+                "partId": "JPUB_000235",
+                "principalInvestigatorId": 0,
+                "basePairCount": 0,
+                "featureCount": 0,
+                "viewCount": 2,
+                "hasAttachment": false,
+                "hasSample": false,
+                "hasSequence": false,
+                "hasOriginalSequence": false,
+                "canEdit": true,
+                "accessPermissions": [],
+                "publicRead": false,
+                "linkedParts": []
+            }
+        },
+        {
+            "eValue": "0",
+            "queryLength": 0,
+            "nident": 0,
+            "score": 0.15567097,
+            "maxScore": 0.15567097,
+            "matchDetails": [],
+            "entryInfo": {
+                "id": 251,
+                "type": "STRAIN",
+                "visible": "OK",
+                "parents": [],
+                "index": 0,
+                "recordId": "9a87ecbd-0e9c-4eca-a888-dcbd1d14af03",
+                "name": "JBEI-3139",
+                "owner": "Nathan Hillson",
+                "ownerEmail": "njhillson@lbl.gov",
+                "ownerId": 25,
+                "creator": "Nathan Hillson",
+                "creatorEmail": "njhillson@lbl.gov",
+                "creatorId": 25,
+                "status": "complete",
+                "shortDescription": "clpX protease markerless deletion in Keasling-1484 background, for linear arabinose response and limited ssrA degradation",
+                "creationTime": 1312923554849,
+                "modificationTime": 0,
+                "bioSafetyLevel": 1,
+                "partId": "JPUB_000251",
+                "principalInvestigatorId": 0,
+                "basePairCount": 0,
+                "featureCount": 0,
+                "viewCount": 2,
+                "hasAttachment": false,
+                "hasSample": false,
+                "hasSequence": false,
+                "hasOriginalSequence": false,
+                "canEdit": true,
+                "accessPermissions": [],
+                "publicRead": false,
+                "linkedParts": []
+            }
+        },
+        {
+            "eValue": "0",
+            "queryLength": 0,
+            "nident": 0,
+            "score": 0.15567097,
+            "maxScore": 0.15567097,
+            "matchDetails": [],
+            "entryInfo": {
+                "id": 244,
+                "type": "STRAIN",
+                "visible": "OK",
+                "parents": [],
+                "index": 0,
+                "recordId": "345b8886-1c38-40fc-b484-09cdba7adabf",
+                "name": "JBEI-3144",
+                "owner": "Nathan Hillson",
+                "ownerEmail": "njhillson@lbl.gov",
+                "ownerId": 25,
+                "creator": "Nathan Hillson",
+                "creatorEmail": "njhillson@lbl.gov",
+                "creatorId": 25,
+                "status": "complete",
+                "shortDescription": "clpX protease markerless deletion in Keasling-1484 background, for linear arabinose response and limited ssrA degradation",
+                "creationTime": 1312923554724,
+                "modificationTime": 0,
+                "bioSafetyLevel": 1,
+                "partId": "JPUB_000244",
+                "principalInvestigatorId": 0,
+                "basePairCount": 0,
+                "featureCount": 0,
+                "viewCount": 2,
+                "hasAttachment": false,
+                "hasSample": false,
+                "hasSequence": false,
+                "hasOriginalSequence": false,
+                "canEdit": true,
+                "accessPermissions": [],
+                "publicRead": false,
+                "linkedParts": []
+            }
+        },
+        {
+            "eValue": "0",
+            "queryLength": 0,
+            "nident": 0,
+            "score": 0.15567097,
+            "maxScore": 0.15567097,
+            "matchDetails": [],
+            "entryInfo": {
+                "id": 248,
+                "type": "STRAIN",
+                "visible": "OK",
+                "parents": [],
+                "index": 0,
+                "recordId": "cc86d24a-3402-4e0f-a3a8-0c66e726e590",
+                "name": "JBEI-3136",
+                "owner": "Nathan Hillson",
+                "ownerEmail": "njhillson@lbl.gov",
+                "ownerId": 25,
+                "creator": "Nathan Hillson",
+                "creatorEmail": "njhillson@lbl.gov",
+                "creatorId": 25,
+                "status": "complete",
+                "shortDescription": "clpX protease markerless deletion in Keasling-1484 background, for linear arabinose response and limited ssrA degradation",
+                "creationTime": 1312923554799,
+                "modificationTime": 0,
+                "bioSafetyLevel": 1,
+                "partId": "JPUB_000248",
+                "principalInvestigatorId": 0,
+                "basePairCount": 0,
+                "featureCount": 0,
+                "viewCount": 1,
+                "hasAttachment": false,
+                "hasSample": false,
+                "hasSequence": false,
+                "hasOriginalSequence": false,
+                "canEdit": true,
+                "accessPermissions": [],
+                "publicRead": false,
+                "linkedParts": []
+            }
+        },
+        {
+            "eValue": "0",
+            "queryLength": 0,
+            "nident": 0,
+            "score": 0.15567097,
+            "maxScore": 0.15567097,
+            "matchDetails": [],
+            "entryInfo": {
+                "id": 247,
+                "type": "STRAIN",
+                "visible": "OK",
+                "parents": [],
+                "index": 0,
+                "recordId": "3ea42fb4-8a97-49e2-8c82-d6dd8a8c867d",
+                "name": "JBEI-3135",
+                "owner": "Nathan Hillson",
+                "ownerEmail": "njhillson@lbl.gov",
+                "ownerId": 25,
+                "creator": "Nathan Hillson",
+                "creatorEmail": "njhillson@lbl.gov",
+                "creatorId": 25,
+                "status": "complete",
+                "shortDescription": "clpX protease markerless deletion in Keasling-1484 background, for linear arabinose response and limited ssrA degradation",
+                "creationTime": 1312923554782,
+                "modificationTime": 0,
+                "bioSafetyLevel": 1,
+                "partId": "JPUB_000247",
+                "principalInvestigatorId": 0,
+                "basePairCount": 0,
+                "featureCount": 0,
+                "viewCount": 1,
+                "hasAttachment": false,
+                "hasSample": false,
+                "hasSequence": false,
+                "hasOriginalSequence": false,
+                "canEdit": true,
+                "accessPermissions": [],
+                "publicRead": false,
+                "linkedParts": []
+            }
+        }
+    ]
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 401
+            <small class="text-muted">UNAUTHENTICATED</small>
+            <br>
+            <small>If session identifier is invalid</small>
+            <br><br>
+
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>If api tokens are invalid</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+    curl -X GET
+         -H "Content-Type: application/json"
+         -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+         -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+         -H "Cache-Control: no-cache"
+         "https://public-registry.jbei.org/rest/search?offset=0&limit=5&sort=relevance&q="nathan hillson""</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            If left empty, the search string returns all entries on the ICE instance unless additional filters are
+            applied
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-striped table-bordered margin-top" id="2">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Run Advanced Search</b><br>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/search?searchWeb=:searchWeb</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>POST</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i><br><br>
+            <b>Optional:</b> <br>
+            <ul>
+                <li>
+                    <code>searchWeb=[boolean]</code> <i class="small text-muted">default=false</i><br>
+                    Whether to search web of registries or local ICE instance <br>
+                    <span class="example">example</span>:
+                    <kbd class="small">searchWeb=true</kbd>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+            <pre>{
+    queryString: String,
+    blastQuery: {
+        blastProgram: 'BLAST_N'/'TBLAST_X',
+        sequence: String
+    },
+    bioSafetyOption: 'LEVEL_ONE'/'LEVEL_TWO',
+    entryTypes: ['STRAIN'/'PLASMID'/'PART'/'ARABIDOPSIS'],
+    parameters: {
+        sortField: 'RELEVANCE'/'TYPE'/'PART_ID'/'CREATED'/'NAME',
+        sortAscending: Boolean,
+        start: Integer,
+        retrieveCount: Integer,
+        hasSequence: true/false/undefined,
+        hasAttachment: true/false/undefined,
+        hasSample: true/false/undefined
+    },
+    fieldFilters: [{field: 'NAME'/'ALIAS','PART_ID', filter: String}]
+}</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td>
+            <b>Code:</b> 200 <br>
+            <b>Content:</b> <code> { id : 12 }</code> <a class="small">Show</a> <br>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+   curl -X POST
+        -H "Content-Type: application/json"
+        -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+        -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+        -d '{
+            blastQuery: {
+                blastProgram: "BLAST_N",
+                sequence: "atgaaactgagcaccaagctgtgctggtgtggcatcaagggtcgcctgcgcccacaaaagcagcaacagctgcacaacacgaacctgcaaatgaccgagctgaaaaagcagaagacggccgagcaaaagacccgcccgcagaacgttggcatcaagggcatccagatttatatcccgacgcagtgtgtcaaccaatctgagctggagaaattcgatggcgtcagccagggtaagtacaccatcggcctgggccagaccaacatgagcttcgtgaacgaccgtgaggacatctattctatgagcctgacggtgctgtctaagctgatcaagagctacaacatcgacacgaataagatcggtcgtctggaggtgggtacggagacgctgattgacaagagcaaaagcgtgaagtctgtcttaatgcagctgttcggcgagaacacggatgtcgagggtatcgacaccctgaacgcgtgttacggcggcaccaacgcactgttcaatagcctgaactggattgagagcaacgcctgggatggccgcgatgcgatcgtcgtgtgcggcgatatcgccatctatgacaagggtgcggcacgtccgaccggcggtgcaggcaccgttgcgatgtggattggcccggacgcaccaattgtcttcgattctgtccgcgcgtcttacatggagcacgcctacgacttttacaagccggacttcacgagcgaatacccgtacgtggacggccacttctctctgacctgctatgtgaaggcgctggaccaggtttataagtcttatagcaaaaaggcgatttctaagggcctggtcagcgacccggcaggcagcgacgccctgaacgtgctgaagtatttcgactacaacgtgttccatgtcccgacctgcaaattagtgaccaaatcttatggccgcctgttatataatgatttccgtgccaacccgcagctgttcccggaggttgacgccgagctggcgacgcgtgattacgacgagagcctgaccgacaagaacatcgagaagaccttcgtcaacgtcgcgaagccgttccacaaagagcgtgtggcccaaagcctgatcgtcccgaccaacacgggcaacatgtataccgcgtctgtctacgcggcattcgcgagcctgctgaattacgtcggttctgacgacctgcagggcaagcgcgttggcctgttcagctacggtagcggcttagcggccagcctgtatagctgcaaaattgtcggcgacgtccagcacatcatcaaggagctggacatcaccaacaagctggcgaagcgcatcaccgagacgccgaaagattacgaggcagcgatcgagttacgcgagaatgcgcatctgaagaagaacttcaagccgcaaggtagcatcgagcacctgcagagcggcgtctactacctgacgaacattgacgacaagttccgccgttcttatgacgtcaaaaagtaa"
+            },
+
+            parameters: {
+                retrieveCount: 5
+            }
+        }' "https://public-registry.jbei.org/rest/search"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-striped table-bordered margin-top" id="3">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Rebuild search indexes</b> <span class="label label-warning">Admin</span><br>
+            <small>Schedules a rebuild of the lucene indexes that are used for searching</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/search/indexes/lucene</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>PUT</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200 <br>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>The account of the user making the request does not have administrative privileges</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+    curl -X PUT
+         -H "Content-Type: application/json"
+         -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+         -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+         -d ""
+         "https://public-registry.jbei.org/rest/search/indexes/lucene"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+            Depending on the number of parts on the ICE instance, this process can take a long time to complete. This
+            happens asynchronously so a return of "OK" does not imply that the rebuild was successful, just that it
+            was successfully scheduled.
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered margin-top" id="4">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td><b>Rebuild blast database </b> <span class="label label-warning">Admin</span><br>
+            <small>Schedules a rebuild of the blast database</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>URL</th>
+        <td><code>/rest/search/indexes/blast</code></td>
+    </tr>
+
+    <tr>
+        <th>Method</th>
+        <td><b><code>PUT</code></b></td>
+    </tr>
+
+    <tr>
+        <th>URL Params</th>
+        <td>
+            <b>Required:</b> <br>
+            <i>None</i>
+            <br><br>
+            <b>Optional:</b> <br>
+            <i>None</i>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Data Params</th>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Header Params</th>
+        <td>
+            <code>X-ICE-Authentication-SessionId</code><br>
+            Unique session id obtained after successful authentication.
+            <br><br>
+            OR
+            <br><br>
+            <code>X-ICE-API-Token-Client</code> AND <code>X-ICE-API-Token</code><br>
+            API Client name and token available from API Keys
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Success Response
+        </th>
+        <td ng-init="showResponse=false">
+            <b>Code:</b> 200 <br>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Error Response
+        </th>
+        <td>
+            <b>Code:</b> 403
+            <small class="text-muted">FORBIDDEN</small>
+            <br>
+            <small>The account of the user making the request does not have administrative privileges</small>
+            <br><br>
+
+            <b>Code:</b> 500
+            <small class="text-muted">INTERNAL_SERVER_ERROR</small>
+            <br>
+            <small>On unknown server error</small>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Sample Call
+        </th>
+        <td>
+            <pre>
+    curl -X PUT
+         -H "Content-Type: application/json"
+         -H "X-ICE-API-Token-Client: &lsaquo;api-token-client&rsaquo;"
+         -H "X-ICE-API-Token: &lsaquo;api-token&rsaquo;"
+         -d ""
+         "https://public-registry.jbei.org/rest/search/indexes/blast"</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Notes</th>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>

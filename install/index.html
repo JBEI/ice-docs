@@ -1,0 +1,193 @@
+<html>
+<title>Quick Install Guide</title>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- local stylesheet-->
+    <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+</head>
+
+<body>
+<div class="container" id="top">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="../index.html">Main</a></li>
+            <li class="active">Installation Guide</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h2>ICE Installation Guide</h2>
+            </div>
+            This guide is intended to help you quickly set up an ICE installation for evaluation, private use or server
+            installation.
+            Direct any questions to the <a href="https://groups.google.com/forum/#!forum/gd-ice">ICE Google Groups
+            page</a>. The project page
+            can be <a href="https://github.com/JBEI/ice">found on github.</a>
+
+            <br><br>
+            <strong>Menu</strong>
+            <br>
+            <ul>
+                <li><a href="#req">Installation Requirements</a></li>
+                <li><a href="#step-by-step">Step-by-Step Quick Install Guide</a></li>
+                <li><a href="#war-install">Installing from the WAR file</a></li>
+                <li><a href="#req">Running a test server</a></li>
+                <li><a href="#faq">Frequently asked questions</a></li>
+                <li><a href="#contrib">Contributing</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h3 id="req">Installation Requirements</h3>
+            </div>
+            ICE is a web application with the following requirements: <br><br>
+            <ul>
+                <li>Deployment in a J2EE servlet container (such as <a href="http://tomcat.apache.org/">Apache
+                    Tomcat</a>)
+                </li>
+                <li>Java JRE 8+. Oracle JDK is recommended.</li>
+                <li><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/">BLAST+</a></li>
+                <li>Optionally, <a href="https://maven.apache.org/">Apache Maven</a> if installing from <a
+                        href="https://github.com/JBEI/ice">sources</a></li>
+            </ul>
+
+            ICE is configured by default to use <a href="http://hsqldb.org/">HSQLDB</a> for data storage.
+            In a production environment, it is highly recommended that a standalone database be used.
+            <a href="http://hibernate.org/orm/">Hibernate</a> is used
+            for Object/Relational mapping and therefore ICE can be configured and used with any of the Hibernate
+            supported databases.
+            <a href="http://www.postgresql.org/">PostgreSQL</a> has been tested more extensively with ICE.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h3 id="step-by-step">Step-by-Step Quick Install Guide</h3>
+            </div>
+            Step-by-Step installation guide using apache-tomcat and postgresql: <br><br>
+            <ul>
+                <li>Install <a href="http://tomcat.apache.org/">Apache Tomcat</a> on your system's default location or one
+                    of choice. Henceforth referred to as <kbd>$ICE-HOME</kbd>
+                </li>
+                <li>Download a pre-compiled war of ICE and deploy as the ROOT webapp in <kbd>$ICE-HOME</kbd>. See
+                    <a href="#war-install">installing from a WAR  details</a></li>
+                <li>Alternatively, you can compile </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h3 id="war-install">Installing from the WAR file</h3>
+            </div>
+            A pre-compiled WAR file is made available from our <a href="http://registry-test.jbei.org:8111/">continuous
+            build system</a>.
+            Click "Log in as guest" and then select "Artifacts" under the Master branch to download the latest
+            production ready version. The Dev
+            branch may contain newer features in a beta state.
+            <br><br>
+            <ul>
+                <li>Extract the contents of the WAR file using any unzip utility.</li>
+                <li>Change the hibernate database connections in <kbd>$ICE_HOME/WEB-INF/classes/hibernate.cfg.xml</kbd>
+                    (where $ICE_HOME is the directory where the WAR file was extracted). The following is an example
+                    configuration for a PostgreSQL database running on the local machine:<br><br>
+<pre>    &lt;property name="hibernate.connection.url"&gt;jdbc:postgresql://localhost/regdb&lt;/property&gt;
+    &lt;property name="hibernate.connection.driver_class"&gt;org.postgresql.Driver&lt;/property&gt;
+    &lt;property name="hibernate.connection.username"&gt;userName&lt;/property&gt;
+    &lt;roperty name="hibernate.connection.password"&gt;Pa55WorD&lt;/property&gt;
+    &lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.PostgreSQL94Dialect&lt;/property&gt;
+</pre>
+                    Also change the value of the property which indicates the location of the search index<br><br>
+                    <pre>&lt;property name="hibernate.search.default.indexBase"&gt;data/index&lt;/property&gt;</pre>
+                </li>
+                <li>ICE uses logback for logging. The default location of the log file is <kbd>/tmp/ice.log</kbd>.
+                    You can change this in <kbd>$ICE_HOME/WEB-INF/classes/logback.xml</kbd> by modifying the
+                    property<br><br>
+                    <pre>&lt;property name="LOG_PATH" value="/tmp"/&gt;</pre>
+                </li>
+            </ul>
+
+            Start up the application container and use your web browser to access ICE. There are some settings stored in
+            the database that also need to be configured. The default administrator username and password is <kbd>Administrator</kbd>
+            (for both). Be sure to change the password. The rest of the system settings are on the Admin section of the
+            application. Please go through all the settings and make sure the values are correct. They can be changed at
+            any time while the application is running.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h3>Running a test server</h3>
+            </div>
+            ICE includes a jetty webserver, which can be used test out your compiled package without deploying it to
+            tomcat. The jetty settings are defined in <kbd>$ICE_HOME/jetty-debug.xml</kbd>. You will need to generate
+            a self-signed certificate as ICE uses HTTPS by default.
+            To generate a self-signed certificate run:
+
+            <pre>keytool -genkey -alias tomcat -keyalg RSA -keystore ./.keystore</pre>
+
+            Follow the prompts and enter the requested information. When prompted for a password, you may use
+            <kbd>changeit</kbd>. If you opt for a different password, make sure to enter that is jetty-debug.xml.
+            Copy the generated .keystore file to $ICE_HOME and start jetty by running:
+
+            <pre>mvn jetty:run -Dmaven.test.skip=true</pre>
+
+            Point your browser to https://localhost:8443 to access the application.
+            <br>
+            To run a tomcat server, you may also use the generated keystore file. Update
+            <kbd>$TOMCAT_HOME/conf/server.xml</kbd> to redirect port 8080 to port 8443 using the following Connector
+            directive:
+
+            <pre>&lt;Connector executor="tomcatThreadPool"
+                            port="8080" protocol="HTTP/1.1"
+                            connectionTimeout="20000"
+                            redirectPort="8443" /&gt;
+&lt;Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+           maxThreads="150" scheme="https" secure="true" keystoreFile="./.keystore"
+           keystorePass="changeit" clientAuth="false" sslProtocol="TLS" /&gt;</pre>
+            In a production environment you will need to purchase an SSL certificate, since self-generated certificates
+            result in browser warnings.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h3 id="faq">Frequently asked questions</h3>
+            </div>
+            <i>Coming soon</i>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h3 id="contrib">Contributing</h3>
+            </div>
+            ICE is <a href="https://github.com/JBEI/ice">open source software</a>, and we gladly accept patches to our
+            code. Just send us an email and/or a patch file.
+            We also encourage bug filings and feature requests.
+        </div>
+    </div>
+    <br><br>
+</div>
+
+
+</body>
+</html>
