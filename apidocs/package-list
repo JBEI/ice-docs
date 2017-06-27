@@ -20,6 +20,7 @@ org.jbei.ice.lib.dto.sample
 org.jbei.ice.lib.dto.search
 org.jbei.ice.lib.dto.user
 org.jbei.ice.lib.dto.web
+org.jbei.ice.lib.email
 org.jbei.ice.lib.entry
 org.jbei.ice.lib.entry.attachment
 org.jbei.ice.lib.entry.sample
